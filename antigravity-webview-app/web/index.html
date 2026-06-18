@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Al Wahab Trust - Transparency Portal</title>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Main Viewport Container -->
+    <div id="app-container">
+        
+        <!-- Native App Style Header -->
+        <header class="app-header">
+            <div class="brand-logo">
+                <img src="logo.png" alt="Logo" class="brand-logo-img">
+            </div>
+            <div class="brand-title">
+                <h1 id="brand-main-title">Al Wahab Trust</h1>
+                <span id="brand-sub-title">Aujla Khurd</span>
+            </div>
+            <button class="header-action-btn" id="btn-lang-toggle" onclick="toggleLanguage()">
+                <i class="fa-solid fa-language"></i> <span id="lang-btn-text">اردو</span>
+            </button>
+        </header>
+
+        <!-- Screens Content Area -->
+        <main id="screens-wrapper">
+
+            <!-- SCREEN 1: LEDGER (Default) -->
+            <section class="app-screen active" id="screen-ledger">
+                <!-- Search & Filters Container -->
+                <div class="sticky-controls">
+                    <!-- Search field -->
+                    <div class="search-wrapper">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="search-bar" class="search-input" onkeyup="handleFilterChange()" placeholder="Search description, items, or notes...">
+                    </div>
+
+                    <!-- Ledger filters tabs -->
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" id="tab-all" onclick="setLedgerFilter('all')">All</button>
+                        <button class="filter-tab" id="tab-income" onclick="setLedgerFilter('income')">Intakes</button>
+                        <button class="filter-tab" id="tab-expense" onclick="setLedgerFilter('expense')">Outlays</button>
+                    </div>
+
+                    <!-- Dynamic Timeline Month Selector -->
+                    <div class="timeline-container">
+                        <div class="timeline-title-row">
+                            <span class="timeline-title" id="label-filter-month">Filter by Month</span>
+                        </div>
+                        <div class="timeline-scroll" id="month-timeline">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ledger list section -->
+                <div class="screen-content">
+                    <div class="ledger-header-row">
+                        <h2 class="section-title" id="ledger-table-title">Financial Entries</h2>
+                    </div>
+                    
+                    <!-- Dynamic Transaction Cards Container -->
+                    <div id="ledger-card-list" class="card-list-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCREEN 2: CHARTS -->
+            <section class="app-screen" id="screen-charts">
+                <div class="screen-content">
+                    <h2 class="section-title" id="title-charts-screen">Analytics</h2>
+                    
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <span class="chart-title" id="chart-cashflow-title">Month-over-Month Cash Flows</span>
+                        </div>
+                        <div class="chart-canvas-wrapper">
+                            <canvas id="cashflowChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <span class="chart-title" id="chart-category-title">Expense Breakdown</span>
+                        </div>
+                        <div class="chart-canvas-wrapper">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCREEN 3: STATS -->
+            <section class="app-screen" id="screen-stats">
+                <div class="screen-content">
+                    <h2 class="section-title" id="title-stats-screen">Key Metrics</h2>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card intake">
+                            <div class="stat-header">
+                                <span class="stat-label" id="label-total-income">Total Intakes</span>
+                                <div class="stat-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                            </div>
+                            <div class="stat-value" id="card-total-income">Rs. 0</div>
+                            <div class="stat-meta" id="card-income-count">0 donations</div>
+                        </div>
+                        
+                        <div class="stat-card outlay">
+                            <div class="stat-header">
+                                <span class="stat-label" id="label-total-expense">Total Outlays</span>
+                                <div class="stat-icon"><i class="fa-solid fa-arrow-trend-down"></i></div>
+                            </div>
+                            <div class="stat-value" id="card-total-expense">Rs. 0</div>
+                            <div class="stat-meta" id="card-expense-count">0 expenses</div>
+                        </div>
+                        
+                        <div class="stat-card balance">
+                            <div class="stat-header">
+                                <span class="stat-label" id="label-balance">Remaining Balance</span>
+                                <div class="stat-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                            </div>
+                            <div class="stat-value" id="card-balance">Rs. 0</div>
+                            <div class="stat-meta" id="label-balance-meta">Net cash in hand</div>
+                        </div>
+                        
+                        <div class="stat-card packages">
+                            <div class="stat-header">
+                                <span class="stat-label" id="label-packages">Bags Distributed</span>
+                                <div class="stat-icon"><i class="fa-solid fa-box-open"></i></div>
+                            </div>
+                            <div class="stat-value" id="card-packages">0</div>
+                            <div class="stat-meta" id="label-packages-meta">Food relief packages</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCREEN 4: ADMIN TOOLS -->
+            <section class="app-screen" id="screen-admin">
+                <div class="screen-content">
+                    <h2 class="section-title" id="title-admin-screen">Admin Controls</h2>
+
+                    <!-- Admin Form Section -->
+                    <div class="admin-form-card">
+                        <h3 class="form-section-title">
+                            <i class="fa-solid fa-circle-plus"></i> <span id="lbl-add-entry-title">Add Transaction Entry</span>
+                        </h3>
+                        
+                        <form id="add-transaction-form" onsubmit="handleAddTransaction(event)">
+                            <div class="form-group">
+                                <label for="form-date" id="lbl-add-date">Transaction Date</label>
+                                <input type="date" id="form-date" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-type" id="lbl-add-type">Type</label>
+                                <select id="form-type" class="form-control" onchange="toggleFormNotesLabel()" required>
+                                    <option value="income">Intake (Donation Received)</option>
+                                    <option value="expense">Outlay (Expense Paid)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label id="form-notes-label" for="form-notes">Donor Name</label>
+                                <input type="text" id="form-notes" class="form-control" placeholder="e.g., Saad or Vegetable Purchase" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-amount" id="lbl-add-amount">Amount (PKR)</label>
+                                <input type="number" id="form-amount" class="form-control" min="1" step="any" placeholder="e.g., 5000" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-category" id="lbl-add-category">Category</label>
+                                <select id="form-category" class="form-control" required>
+                                    <option value="Donation">Donation</option>
+                                    <option value="Groceries">Groceries / Food Items</option>
+                                    <option value="Packaging">Packaging Supplies</option>
+                                    <option value="Logistics">Logistics / Mandi Transport</option>
+                                    <option value="Eidi / Eid Support">Eidi / Eid Support</option>
+                                    <option value="Medical">Medical Support</option>
+                                    <option value="Equipment / Tools">Equipment / Tools</option>
+                                    <option value="Other">Other Expense</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-receipt" id="lbl-add-receipt">Attach Receipt Image</label>
+                                <input type="file" id="form-receipt" class="form-control" accept="image/*">
+                            </div>
+
+                            <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">
+                                <i class="fa-solid fa-plus"></i> <span id="lbl-save-entry-btn">Save Transaction Entry</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Backup / Restore Controls inside Admin Panel -->
+                    <div class="admin-tools-card" id="admin-panel" style="display: block;">
+                        <h3 class="form-section-title">
+                            <i class="fa-solid fa-database"></i> <span id="lbl-database-tools-title">Database Operations</span>
+                        </h3>
+                        <div class="admin-actions-row">
+                            <button class="btn-secondary" onclick="exportDataJSON()">
+                                <i class="fa-solid fa-file-export"></i> <span id="lbl-export-json">Export JSON Backup</span>
+                            </button>
+                            <button class="btn-secondary" onclick="document.getElementById('import-file-input').click()">
+                                <i class="fa-solid fa-file-import"></i> <span id="lbl-import-json">Import JSON Backup</span>
+                            </button>
+                            <button class="btn-secondary" onclick="exportDataCSV()">
+                                <i class="fa-solid fa-file-csv"></i> <span id="lbl-export-csv">Export to CSV (Excel)</span>
+                            </button>
+                            <input type="file" id="import-file-input" style="display:none;" onchange="importDataJSON(event)" accept=".json">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCREEN 5: SETTINGS -->
+            <section class="app-screen" id="screen-settings">
+                <div class="screen-content">
+                    <h2 class="section-title" id="title-settings-screen">Settings</h2>
+
+                    <div class="settings-card">
+                        <!-- View Toggle -->
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <span class="setting-label" id="lbl-setting-viewmode">View Mode</span>
+                                <span class="setting-desc" id="lbl-setting-viewmode-desc">Access unmasked audit records</span>
+                            </div>
+                            <div class="mode-toggle-group">
+                                <button class="mode-btn active" id="btn-public-view" onclick="switchViewMode('public')">
+                                    <i class="fa-solid fa-shield-halved"></i> <span id="view-public-text">Public</span>
+                                </button>
+                                <button class="mode-btn" id="btn-admin-view" onclick="switchViewMode('admin')">
+                                    <i class="fa-solid fa-lock"></i> <span id="view-admin-text">Admin</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Language toggle row -->
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <span class="setting-label" id="lbl-setting-lang">Language / زبان</span>
+                                <span class="setting-desc">Toggle English or Urdu Nastaliq</span>
+                            </div>
+                            <button class="btn-secondary" onclick="toggleLanguage()" style="border-radius: 20px; padding: 6px 16px;">
+                                <i class="fa-solid fa-language"></i> <span id="lbl-lang-toggle-text">اردو / English</span>
+                            </button>
+                        </div>
+
+                        <!-- Seed Data Reset -->
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <span class="setting-label" id="lbl-setting-reset">Reset Database</span>
+                                <span class="setting-desc" id="lbl-setting-reset-desc">Wipe changes and restore seed data</span>
+                            </div>
+                            <button class="btn-danger-outline" onclick="resetToDefaultData()">
+                                <i class="fa-solid fa-rotate-left"></i> <span id="lbl-reset-btn">Reset Data</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- App info footer credit -->
+                    <div class="app-info-footer">
+                        <p id="footer-credit-text">Al Wahab Trust Portal &bull; Aujla Khurd, Pakistan</p>
+                        <p style="font-size: 11px; opacity: 0.6; margin-top: 5px;">v2.0 (Mobile SPA Edition)</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- PERSISTENT BOTTOM NAVIGATION BAR -->
+        <nav id="bottom-nav-bar">
+            <div class="nav-item active" onclick="switchScreen('ledger')" id="nav-ledger">
+                <div class="nav-icon-wrapper">
+                    <i class="fa-solid fa-receipt"></i>
+                </div>
+                <span class="nav-label" id="nav-label-ledger">Ledger</span>
+            </div>
+            <div class="nav-item" onclick="switchScreen('charts')" id="nav-charts">
+                <div class="nav-icon-wrapper">
+                    <i class="fa-solid fa-chart-column"></i>
+                </div>
+                <span class="nav-label" id="nav-label-charts">Charts</span>
+            </div>
+            <div class="nav-item" onclick="switchScreen('stats')" id="nav-stats">
+                <div class="nav-icon-wrapper">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+                <span class="nav-label" id="nav-label-stats">Stats</span>
+            </div>
+            <div class="nav-item" onclick="switchScreen('admin')" id="nav-admin">
+                <div class="nav-icon-wrapper">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <span class="nav-label" id="nav-label-admin">Admin</span>
+            </div>
+            <div class="nav-item" onclick="switchScreen('settings')" id="nav-settings">
+                <div class="nav-icon-wrapper">
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+                <span class="nav-label" id="nav-label-settings">Settings</span>
+            </div>
+        </nav>
+
+    </div> <!-- End App Container -->
+
+    <!-- SLIDE-UP BOTTOM SHEET: RECEIPT VIEWER -->
+    <div class="modal-overlay bottom-sheet-overlay" id="receipt-modal" onclick="closeReceiptModal(event)">
+        <div class="bottom-sheet-container" onclick="event.stopPropagation()">
+            <!-- Grab handle bar for native mobile feel -->
+            <div class="bottom-sheet-handle"></div>
+            
+            <div class="bottom-sheet-header">
+                <span class="bottom-sheet-title" id="modal-receipt-title">Transaction details</span>
+                <button class="bottom-sheet-close" onclick="closeReceiptModal(event)">
+                    <i class="fa-solid fa-xmark fa-lg"></i>
+                </button>
+            </div>
+            
+            <div class="bottom-sheet-body" id="modal-receipt-body">
+                <!-- Receipt details / digital receipt layout loaded dynamically by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE-UP BOTTOM SHEET: EDIT TRANSACTION -->
+    <div class="modal-overlay bottom-sheet-overlay" id="edit-tx-modal" onclick="closeEditTxModal(event)">
+        <div class="bottom-sheet-container" onclick="event.stopPropagation()">
+            <div class="bottom-sheet-handle"></div>
+            
+            <div class="bottom-sheet-header">
+                <span class="bottom-sheet-title" id="edit-modal-title">Edit Entry</span>
+                <button class="bottom-sheet-close" onclick="closeEditTxModal(event)">
+                    <i class="fa-solid fa-xmark fa-lg"></i>
+                </button>
+            </div>
+            
+            <div class="bottom-sheet-body" style="padding: 20px;">
+                <form id="edit-transaction-form" onsubmit="handleEditTransactionSubmit(event)" style="width: 100%;">
+                    <input type="hidden" id="edit-form-id">
+                    
+                    <div style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
+                        <div class="form-group">
+                            <label for="edit-form-date" id="lbl-edit-date">Transaction Date</label>
+                            <input type="date" id="edit-form-date" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-form-type" id="lbl-edit-type">Type</label>
+                            <select id="edit-form-type" class="form-control" onchange="toggleEditFormNotesLabel()" required>
+                                <option value="income">Intake (Donation Received)</option>
+                                <option value="expense">Outlay (Expense Paid)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label id="edit-form-notes-label" for="edit-form-notes">Donor Name / Description</label>
+                            <input type="text" id="edit-form-notes" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-form-amount" id="lbl-edit-amount">Amount (PKR)</label>
+                            <input type="number" id="edit-form-amount" class="form-control" min="1" step="any" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-form-category" id="lbl-edit-category">Category</label>
+                            <select id="edit-form-category" class="form-control" required>
+                                <option value="Donation">Donation</option>
+                                <option value="Groceries">Groceries / Food Items</option>
+                                <option value="Packaging">Packaging Supplies</option>
+                                <option value="Logistics">Logistics / Mandi Transport</option>
+                                <option value="Eidi / Eid Support">Eidi / Eid Support</option>
+                                <option value="Medical">Medical Support</option>
+                                <option value="Equipment / Tools">Equipment / Tools</option>
+                                <option value="Other">Other Expense</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Receipt Attachment Section -->
+                        <div class="form-group" style="border-top: 1px solid #e9ecea; padding-top: 15px;">
+                            <label style="font-weight: 700; margin-bottom: 5px;" id="lbl-edit-receipt-title">Receipt Attachment</label>
+                            
+                            <!-- Thumbnail Preview -->
+                            <div id="edit-receipt-preview-container" style="display: none; align-items: center; gap: 12px; background: var(--bg-main); padding: 10px; border-radius: var(--radius-sm); border: 1px solid #d0d7d4;">
+                                <div id="edit-receipt-thumbnail-wrapper" style="width: 60px; height: 60px; border-radius: 4px; overflow: hidden; background: #e2e8f0; display: flex; align-items: center; justify-content: center; border: 1px solid #cbd5e0; flex-shrink: 0;">
+                                    <img id="edit-receipt-thumbnail" src="" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+                                    <span style="font-size: 12px; font-weight: 600; color: var(--text-main);" id="lbl-has-receipt">Has attached receipt</span>
+                                    <div style="display: flex; gap: 8px;">
+                                        <button type="button" class="btn-secondary" style="padding: 4px 8px; font-size: 12px;" onclick="document.getElementById('edit-receipt-upload').click()">
+                                            <i class="fa-solid fa-arrows-rotate"></i> <span id="lbl-change-receipt-btn">Change</span>
+                                        </button>
+                                        <button type="button" class="btn-danger" style="padding: 4px 8px; font-size: 12px; background: var(--danger-color); color: white;" onclick="removeEditFormReceipt()">
+                                            <i class="fa-solid fa-trash-can"></i> <span id="lbl-remove-receipt-btn">Remove</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Image file selection controls -->
+                            <div id="edit-receipt-upload-container">
+                                <input type="file" id="edit-receipt-upload" class="form-control" accept="image/*" onchange="handleEditReceiptUploadChange(event)">
+                                <span style="font-size: 11px; color: var(--text-muted); margin-top: 4px;" id="lbl-upload-receipt-help">Select an image file to upload receipt.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 25px; border-top: 1px solid #e9ecea; padding-top: 20px;">
+                        <button type="submit" class="btn-primary" style="width: 100%;">
+                            <i class="fa-solid fa-floppy-disk"></i> <span id="lbl-save-changes-btn">Save Changes</span>
+                        </button>
+                        <div style="display: flex; gap: 10px;">
+                            <button type="button" class="btn-danger" id="btn-edit-delete" onclick="handleDeleteTransaction()" style="flex: 1; justify-content: center;">
+                                <i class="fa-solid fa-trash"></i> <span id="lbl-delete-btn">Delete</span>
+                            </button>
+                            <button type="button" class="btn-secondary" onclick="closeEditTxModal(event)" style="flex: 1; justify-content: center;">
+                                <span id="lbl-cancel-btn">Cancel</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FULL SCREEN NUMERIC PIN PAD OVERLAY -->
+    <div class="modal-overlay" id="admin-passcode-modal">
+        <div class="pin-pad-container">
+            <div class="pin-pad-header">
+                <div class="pin-lock-icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h3 class="pin-pad-title" id="pin-title">Admin Authentication</h3>
+                <p class="pin-pad-desc" id="pin-subtitle">Please enter PIN to unlock admin tools</p>
+                
+                <!-- Display Dots to show entered digits -->
+                <div class="pin-dots-row" id="pin-dots-container">
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                </div>
+                
+                <p id="admin-error-msg" class="pin-error-message" style="display: none;">
+                    Incorrect PIN! (Default is 1234)
+                </p>
+            </div>
+            
+            <!-- Hidden input to align with legacy JS, but we will capture key pad clicks -->
+            <input type="password" id="admin-passcode-input" style="position: absolute; opacity: 0; pointer-events: none;" readonly>
+            
+            <!-- Grid Keyboard Layout -->
+            <div class="pin-keyboard-grid">
+                <button class="pin-key" onclick="pressPinNumber(1)">1</button>
+                <button class="pin-key" onclick="pressPinNumber(2)">2</button>
+                <button class="pin-key" onclick="pressPinNumber(3)">3</button>
+                <button class="pin-key" onclick="pressPinNumber(4)">4</button>
+                <button class="pin-key" onclick="pressPinNumber(5)">5</button>
+                <button class="pin-key" onclick="pressPinNumber(6)">6</button>
+                <button class="pin-key" onclick="pressPinNumber(7)">7</button>
+                <button class="pin-key" onclick="pressPinNumber(8)">8</button>
+                <button class="pin-key" onclick="pressPinNumber(9)">9</button>
+                <button class="pin-key clear-key" onclick="clearPin()">C</button>
+                <button class="pin-key" onclick="pressPinNumber(0)">0</button>
+                <button class="pin-key back-key" onclick="backspacePin()"><i class="fa-solid fa-delete-left"></i></button>
+            </div>
+            
+            <div class="pin-pad-footer">
+                <button class="btn-cancel-pin" onclick="cancelAdminUnlock()" id="pin-cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Files -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
