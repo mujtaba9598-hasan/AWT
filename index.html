@@ -255,6 +255,105 @@
         </div>
     </div>
 
+    <!-- Edit Transaction Modal -->
+    <div class="modal-overlay" id="edit-tx-modal" onclick="closeEditTxModal(event)">
+        <div class="modal-container" onclick="event.stopPropagation()" style="max-width: 550px;">
+            <div class="modal-header">
+                <span class="modal-title" id="edit-modal-title">Edit Transaction Entry</span>
+                <button class="modal-close" onclick="closeEditTxModal(event)">
+                    <i class="fa-solid fa-xmark fa-lg"></i>
+                </button>
+            </div>
+            <div class="modal-body" style="width: 100%; padding: 20px;">
+                <form id="edit-transaction-form" onsubmit="handleEditTransactionSubmit(event)" style="width: 100%;">
+                    <input type="hidden" id="edit-form-id">
+                    
+                    <div style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
+                        <div class="form-group">
+                            <label for="edit-form-date" id="lbl-edit-date">Transaction Date</label>
+                            <input type="date" id="edit-form-date" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-form-type" id="lbl-edit-type">Type</label>
+                            <select id="edit-form-type" class="form-control" onchange="toggleEditFormNotesLabel()" required>
+                                <option value="income">Intake (Donation Received)</option>
+                                <option value="expense">Outlay (Expense Paid)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label id="edit-form-notes-label" for="edit-form-notes">Donor Name / Description</label>
+                            <input type="text" id="edit-form-notes" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-form-amount" id="lbl-edit-amount">Amount (PKR)</label>
+                            <input type="number" id="edit-form-amount" class="form-control" min="1" step="any" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-form-category" id="lbl-edit-category">Category</label>
+                            <select id="edit-form-category" class="form-control" required>
+                                <option value="Donation">Donation</option>
+                                <option value="Groceries">Groceries / Food Items</option>
+                                <option value="Packaging">Packaging Supplies</option>
+                                <option value="Logistics">Logistics / Mandi Transport</option>
+                                <option value="Eidi / Eid Support">Eidi / Eid Support</option>
+                                <option value="Medical">Medical Support</option>
+                                <option value="Equipment / Tools">Equipment / Tools</option>
+                                <option value="Other">Other Expense</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Receipt Section -->
+                        <div class="form-group" style="border-top: 1px solid #e9ecea; padding-top: 15px;">
+                            <label style="font-weight: 700; margin-bottom: 5px;" id="lbl-edit-receipt-title">Receipt Attachment</label>
+                            
+                            <!-- Display current receipt status -->
+                            <div id="edit-receipt-preview-container" style="display: none; align-items: center; gap: 12px; background: var(--bg-main); padding: 10px; border-radius: var(--radius-sm); border: 1px solid #d0d7d4;">
+                                <div id="edit-receipt-thumbnail-wrapper" style="width: 60px; height: 60px; border-radius: 4px; overflow: hidden; background: #e2e8f0; display: flex; align-items: center; justify-content: center; border: 1px solid #cbd5e0; flex-shrink: 0;">
+                                    <img id="edit-receipt-thumbnail" src="" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+                                    <span style="font-size: 12px; font-weight: 600; color: var(--text-main);" id="lbl-has-receipt">Has attached receipt</span>
+                                    <div style="display: flex; gap: 8px;">
+                                        <button type="button" class="btn-secondary" style="padding: 4px 8px; font-size: 12px;" onclick="document.getElementById('edit-receipt-upload').click()">
+                                            <i class="fa-solid fa-arrows-rotate"></i> <span id="lbl-change-receipt-btn">Change</span>
+                                        </button>
+                                        <button type="button" class="btn-danger" style="padding: 4px 8px; font-size: 12px; background: var(--danger-color); color: white;" onclick="removeEditFormReceipt()">
+                                            <i class="fa-solid fa-trash-can"></i> <span id="lbl-remove-receipt-btn">Remove</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Upload controls if no receipt -->
+                            <div id="edit-receipt-upload-container">
+                                <input type="file" id="edit-receipt-upload" class="form-control" accept="image/*" onchange="handleEditReceiptUploadChange(event)">
+                                <span style="font-size: 11px; color: var(--text-muted); margin-top: 4px;" id="lbl-upload-receipt-help">Select an image file to upload receipt.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-top: 25px; border-top: 1px solid #e9ecea; padding-top: 20px;">
+                        <button type="button" class="btn-danger" id="btn-edit-delete" onclick="handleDeleteTransaction()">
+                            <i class="fa-solid fa-trash"></i> <span id="lbl-delete-btn">Delete Entry</span>
+                        </button>
+                        <div style="display: flex; gap: 10px;">
+                            <button type="button" class="btn-secondary" onclick="closeEditTxModal(event)">
+                                <span id="lbl-cancel-btn">Cancel</span>
+                            </button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fa-solid fa-floppy-disk"></i> <span id="lbl-save-changes-btn">Save Changes</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Admin View Key Modal Simulation (For simulated visual access control) -->
     <div class="modal-overlay" id="admin-passcode-modal">
         <div class="modal-container" style="max-width:350px;">

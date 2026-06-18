@@ -418,7 +418,7 @@ const INITIAL_TRANSACTIONS = [
     "type": "expense",
     "category": "Groceries",
     "amount": 35050.0,
-    "receipt": null
+    "receipt": "WhatsApp Image 2026-06-18 at 2.16.14 PM.jpeg"
   },
   {
     "id": "tx_39",
@@ -440,7 +440,7 @@ const INITIAL_TRANSACTIONS = [
     "type": "income",
     "category": "Donation",
     "amount": 40000.0,
-    "receipt": null
+    "receipt": "WhatsApp Image 2026-06-18 at 2.16.11 PM.jpeg"
   },
   {
     "id": "tx_41",
@@ -561,7 +561,7 @@ const INITIAL_TRANSACTIONS = [
     "type": "income",
     "category": "Donation",
     "amount": 15000.0,
-    "receipt": null
+    "receipt": "WhatsApp Image 2026-06-18 at 2.16.13 PM.jpeg"
   },
   {
     "id": "tx_52",
@@ -858,7 +858,7 @@ const INITIAL_TRANSACTIONS = [
     "type": "expense",
     "category": "Equipment / Tools",
     "amount": 4500.0,
-    "receipt": null
+    "receipt": "WhatsApp Image 2026-06-18 at 2.16.22 PM.jpeg"
   },
   {
     "id": "tx_79",
@@ -1078,7 +1078,7 @@ const INITIAL_TRANSACTIONS = [
     "type": "expense",
     "category": "Packaging",
     "amount": 79200.0,
-    "receipt": null
+    "receipt": "WhatsApp Image 2026-06-18 at 2.16.17 PM (1).jpeg"
   },
   {
     "id": "tx_99",
@@ -1452,7 +1452,7 @@ const INITIAL_TRANSACTIONS = [
     "type": "income",
     "category": "Donation",
     "amount": 15000.0,
-    "receipt": null
+    "receipt": "WhatsApp Image 2026-06-18 at 2.16.29 PM.jpeg"
   },
   {
     "id": "tx_133",
@@ -1474,7 +1474,7 @@ const INITIAL_TRANSACTIONS = [
     "type": "expense",
     "category": "Groceries",
     "amount": 93870.0,
-    "receipt": null
+    "receipt": "WhatsApp Image 2026-06-18 at 2.16.33 PM.jpeg"
   },
   {
     "id": "tx_135",

@@ -51,7 +51,23 @@ const TRANSLATIONS = {
         outlay: "Outlay",
         viewReceipt: "View Receipt",
         noReceipt: "No Receipt",
-        linkFile: "Link File"
+        linkFile: "Link File",
+        // Edit modal translations
+        editModalTitle: "Edit Transaction Entry",
+        lblEditDate: "Transaction Date",
+        lblEditType: "Type",
+        lblEditNotesIncome: "Donor Name",
+        lblEditNotesExpense: "Expense Description / Notes",
+        lblEditAmount: "Amount (PKR)",
+        lblEditCategory: "Category",
+        lblEditReceiptTitle: "Receipt Attachment",
+        lblHasReceipt: "Has attached receipt",
+        lblChangeReceiptBtn: "Change",
+        lblRemoveReceiptBtn: "Remove",
+        lblUploadReceiptHelp: "Select an image file to upload receipt.",
+        lblDeleteBtn: "Delete Entry",
+        lblCancelBtn: "Cancel",
+        lblSaveChangesBtn: "Save Changes"
     },
     ur: {
         brandTitle: "الوہاب ٹرسٹ",
@@ -86,7 +102,23 @@ const TRANSLATIONS = {
         outlay: "خرچ",
         viewReceipt: "رسید دیکھیں",
         noReceipt: "رسید نہیں ہے",
-        linkFile: "فائل لنک کریں"
+        linkFile: "فائل لنک کریں",
+        // Edit modal translations
+        editModalTitle: "انٹری میں ترمیم کریں",
+        lblEditDate: "انٹری کی تاریخ",
+        lblEditType: "قسم",
+        lblEditNotesIncome: "عطیہ دہندہ کا نام",
+        lblEditNotesExpense: "اخراجات کی تفصیل / نوٹس",
+        lblEditAmount: "رقم (پاکستانی روپے)",
+        lblEditCategory: "کیٹیگری",
+        lblEditReceiptTitle: "رسید منسلک کریں",
+        lblHasReceipt: "رسید منسلک ہے",
+        lblChangeReceiptBtn: "تبدیل کریں",
+        lblRemoveReceiptBtn: "حذف کریں",
+        lblUploadReceiptHelp: "رسید اپ لوڈ کرنے کے لیے تصویر منتخب کریں۔",
+        lblDeleteBtn: "انٹری حذف کریں",
+        lblCancelBtn: "منسوخ کریں",
+        lblSaveChangesBtn: "محفوظ کریں"
     }
 };
 
@@ -135,7 +167,21 @@ const elements = {
     addTxForm: document.getElementById('add-transaction-form'),
     formDate: document.getElementById('form-date'),
     formNotesLabel: document.getElementById('form-notes-label'),
-    formNotes: document.getElementById('form-notes')
+    formNotes: document.getElementById('form-notes'),
+    
+    // Edit Modal Elements
+    editTxModal: document.getElementById('edit-tx-modal'),
+    editFormId: document.getElementById('edit-form-id'),
+    editFormDate: document.getElementById('edit-form-date'),
+    editFormType: document.getElementById('edit-form-type'),
+    editFormNotesLabel: document.getElementById('edit-form-notes-label'),
+    editFormNotes: document.getElementById('edit-form-notes'),
+    editFormAmount: document.getElementById('edit-form-amount'),
+    editFormCategory: document.getElementById('edit-form-category'),
+    editReceiptPreviewContainer: document.getElementById('edit-receipt-preview-container'),
+    editReceiptThumbnail: document.getElementById('edit-receipt-thumbnail'),
+    editReceiptUploadContainer: document.getElementById('edit-receipt-upload-container'),
+    editReceiptUpload: document.getElementById('edit-receipt-upload')
 };
 
 // Initialize Application on load
@@ -451,6 +497,19 @@ function renderLedgerTable(filteredTxs) {
                 notesDisplay = translateDescription(notesDisplay, true);
             }
             
+            // Add edit button in admin view
+            let notesCellContent = notesDisplay;
+            if (state.viewMode === 'admin') {
+                notesCellContent = `
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%;">
+                        <span>${notesDisplay}</span>
+                        <button class="edit-entry-btn" onclick="openEditTxModal('${tx.id}')" title="${isUr ? 'انٹری میں ترمیم کریں' : 'Edit Entry'}">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                    </div>
+                `;
+            }
+            
             const categoryDisplay = isUr ? (CATEGORY_TRANSLATIONS[tx.category] || tx.category) : tx.category;
             
             const amountClass = tx.type === 'income' ? 'income' : 'expense';
@@ -495,7 +554,7 @@ function renderLedgerTable(filteredTxs) {
                             <i class="fa-solid fa-${badgeIcon}"></i> ${badgeText}
                         </span>
                     </td>
-                    <td style="max-width: 320px; font-size:14px; word-break: break-word;">${notesDisplay}</td>
+                    <td style="max-width: 320px; font-size:14px; word-break: break-word;">${notesCellContent}</td>
                     <td><span class="cat-tag">${categoryDisplay}</span></td>
                     <td class="amount-text ${amountClass}" style="text-align: right;">${amountPrefix} Rs. ${amountText}</td>
                     <td>${receiptHTML}</td>
@@ -556,6 +615,28 @@ function toggleLanguage() {
     document.getElementById('tab-all').innerText = t.tabAll;
     document.getElementById('tab-income').innerText = t.tabIncome;
     document.getElementById('tab-expense').innerText = t.tabExpense;
+
+    // Translate Edit Modal elements if they exist
+    if (document.getElementById('edit-modal-title')) {
+        document.getElementById('edit-modal-title').innerText = t.editModalTitle;
+        document.getElementById('lbl-edit-date').innerText = t.lblEditDate;
+        document.getElementById('lbl-edit-type').innerText = t.lblEditType;
+        
+        // Update edit form notes label based on selected type
+        const editType = document.getElementById('edit-form-type').value;
+        document.getElementById('edit-form-notes-label').innerText = editType === 'income' ? t.lblEditNotesIncome : t.lblEditNotesExpense;
+        
+        document.getElementById('lbl-edit-amount').innerText = t.lblEditAmount;
+        document.getElementById('lbl-edit-category').innerText = t.lblEditCategory;
+        document.getElementById('lbl-edit-receipt-title').innerText = t.lblEditReceiptTitle;
+        document.getElementById('lbl-has-receipt').innerText = t.lblHasReceipt;
+        document.getElementById('lbl-change-receipt-btn').innerText = t.lblChangeReceiptBtn;
+        document.getElementById('lbl-remove-receipt-btn').innerText = t.lblRemoveReceiptBtn;
+        document.getElementById('lbl-upload-receipt-help').innerText = t.lblUploadReceiptHelp;
+        document.getElementById('lbl-delete-btn').innerText = t.lblDeleteBtn;
+        document.getElementById('lbl-cancel-btn').innerText = t.lblCancelBtn;
+        document.getElementById('lbl-save-changes-btn').innerText = t.lblSaveChangesBtn;
+    }
     
     // Re-initialize month filter elements to update entries texts (e.g. 'entries' word in timeline)
     initTimeline();
@@ -1056,3 +1137,172 @@ function exportDataCSV() {
     downloadAnchor.click();
     downloadAnchor.remove();
 }
+
+// ==========================================
+// Admin Edit Transaction modal controls
+// ==========================================
+
+// Global state variable for edit modal receipt base64 storage
+state.tempEditReceipt = null;
+
+function openEditTxModal(txId) {
+    const tx = state.transactions.find(t => t.id === txId);
+    if (!tx) return;
+    
+    // Populate form fields
+    elements.editFormId.value = tx.id;
+    elements.editFormDate.value = tx.date;
+    elements.editFormType.value = tx.type;
+    elements.editFormNotes.value = tx.notes || '';
+    elements.editFormAmount.value = tx.amount;
+    elements.editFormCategory.value = tx.category;
+    
+    state.tempEditReceipt = tx.receipt;
+    
+    // Toggle notes label based on transaction type
+    toggleEditFormNotesLabel();
+    
+    // Configure receipt display preview
+    updateEditFormReceiptPreview();
+    
+    // Show Edit Transaction Modal
+    elements.editTxModal.classList.add('active');
+}
+
+function closeEditTxModal(e) {
+    elements.editTxModal.classList.remove('active');
+    state.tempEditReceipt = null;
+}
+
+function toggleEditFormNotesLabel() {
+    const isUr = state.language === 'ur';
+    const type = elements.editFormType.value;
+    const t = TRANSLATIONS[state.language];
+    
+    if (type === 'income') {
+        elements.editFormNotesLabel.innerText = t.lblEditNotesIncome;
+        elements.editFormNotes.placeholder = isUr ? "مثلاً: یاسر یا سعد" : "e.g., Yasir or Saad";
+    } else {
+        elements.editFormNotesLabel.innerText = t.lblEditNotesExpense;
+        elements.editFormNotes.placeholder = isUr ? "مثلاً: سبزیوں کی خریداری" : "e.g., Vegetable Purchase (32kg Potatoes...)";
+    }
+}
+
+function updateEditFormReceiptPreview() {
+    if (state.tempEditReceipt) {
+        let imgSrc = '';
+        if (state.tempEditReceipt.startsWith('data:')) {
+            imgSrc = state.tempEditReceipt;
+        } else {
+            imgSrc = "data/" + state.tempEditReceipt;
+        }
+        
+        elements.editReceiptThumbnail.src = imgSrc;
+        elements.editReceiptPreviewContainer.style.display = 'flex';
+        elements.editReceiptUploadContainer.style.display = 'none';
+        elements.editReceiptUpload.value = ''; // clear file selection
+    } else {
+        elements.editReceiptThumbnail.src = '';
+        elements.editReceiptPreviewContainer.style.display = 'none';
+        elements.editReceiptUploadContainer.style.display = 'block';
+        elements.editReceiptUpload.value = ''; // clear file selection
+    }
+}
+
+function handleEditReceiptUploadChange(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+        state.tempEditReceipt = evt.target.result;
+        updateEditFormReceiptPreview();
+    };
+    reader.readAsDataURL(file);
+}
+
+function removeEditFormReceipt() {
+    state.tempEditReceipt = null;
+    updateEditFormReceiptPreview();
+}
+
+function handleEditTransactionSubmit(e) {
+    e.preventDefault();
+    
+    const txId = elements.editFormId.value;
+    const dateVal = elements.editFormDate.value;
+    const typeVal = elements.editFormType.value;
+    const notesVal = elements.editFormNotes.value;
+    const amountVal = parseFloat(elements.editFormAmount.value);
+    const categoryVal = elements.editFormCategory.value;
+    
+    if (!dateVal || isNaN(amountVal) || amountVal <= 0) {
+        alert("Please provide a valid date and numeric amount.");
+        return;
+    }
+    
+    const tx = state.transactions.find(t => t.id === txId);
+    if (!tx) {
+        alert("Transaction not found in database.");
+        return;
+    }
+    
+    // Re-mask notes logic for public view
+    let maskedVal = notesVal;
+    if (typeVal === 'income') {
+        const parts = notesVal.split(' ');
+        if (parts.length === 1) {
+            maskedVal = parts[0].length > 2 ? `${parts[0].substring(0, 2)}*** Donation` : 'Anonymous Donation';
+        } else {
+            maskedVal = `${parts[0]} ${parts[parts.length - 1][0]}.*** Donation`;
+        }
+    }
+    
+    // Update properties
+    tx.date = dateVal;
+    tx.originalDate = formatDateISOToOriginal(dateVal);
+    tx.notes = notesVal;
+    tx.maskedNotes = maskedVal;
+    tx.type = typeVal;
+    tx.category = categoryVal;
+    tx.amount = amountVal;
+    tx.receipt = state.tempEditReceipt;
+    
+    // Save database and update visuals
+    saveDatabase();
+    initTimeline();
+    updateUI();
+    
+    closeEditTxModal();
+    
+    const isUr = state.language === 'ur';
+    alert(isUr ? "اندراج کو کامیابی سے اپ ڈیٹ کر دیا گیا ہے!" : "Transaction record has been successfully updated!");
+}
+
+function handleDeleteTransaction() {
+    const isUr = state.language === 'ur';
+    const confirmMsg = isUr 
+        ? "کیا آپ واقعی اس انٹری کو مستقل طور پر حذف کرنا چاہتے ہیں؟" 
+        : "Are you sure you want to delete this transaction entry permanently?";
+        
+    if (!confirm(confirmMsg)) return;
+    
+    const txId = elements.editFormId.value;
+    const index = state.transactions.findIndex(t => t.id === txId);
+    if (index === -1) {
+        alert("Transaction not found.");
+        return;
+    }
+    
+    // Remove transaction record from state array
+    state.transactions.splice(index, 1);
+    
+    saveDatabase();
+    initTimeline();
+    updateUI();
+    
+    closeEditTxModal();
+    
+    alert(isUr ? "اندراج کامیابی سے حذف کر دیا گیا ہے!" : "Transaction entry has been successfully deleted!");
+}
+
