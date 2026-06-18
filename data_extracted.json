@@ -1,0 +1,1019 @@
+{
+  "Transactions": [
+    {
+      "Unnamed: 0": null,
+      "Unnamed: 1": null,
+      "Unnamed: 2": "Hope Trust - Aujla Khurd",
+      "Unnamed: 3": null,
+      "Unnamed: 4": null
+    },
+    {
+      "Unnamed: 0": null,
+      "Unnamed: 1": null,
+      "Unnamed: 2": "18-Jun-2026",
+      "Unnamed: 3": null,
+      "Unnamed: 4": null
+    },
+    {
+      "Unnamed: 0": null,
+      "Unnamed: 1": null,
+      "Unnamed: 2": null,
+      "Unnamed: 3": null,
+      "Unnamed: 4": null
+    },
+    {
+      "Unnamed: 0": "Date",
+      "Unnamed: 1": "Notes",
+      "Unnamed: 2": "Cash In",
+      "Unnamed: 3": "Cash Out",
+      "Unnamed: 4": "Balance"
+    },
+    {
+      "Unnamed: 0": null,
+      "Unnamed: 1": "Previous Balance",
+      "Unnamed: 2": null,
+      "Unnamed: 3": null,
+      "Unnamed: 4": "0"
+    },
+    {
+      "Unnamed: 0": "09-Oct-2025",
+      "Unnamed: 1": "Saad",
+      "Unnamed: 2": "2,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "2,000"
+    },
+    {
+      "Unnamed: 0": "09-Oct-2025",
+      "Unnamed: 1": "Yasir",
+      "Unnamed: 2": "500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "2,500"
+    },
+    {
+      "Unnamed: 0": "09-Oct-2025",
+      "Unnamed: 1": "Zain Shah sep-oct",
+      "Unnamed: 2": "5,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "7,500"
+    },
+    {
+      "Unnamed: 0": "09-Oct-2025",
+      "Unnamed: 1": "Ali chatha",
+      "Unnamed: 2": "3,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "10,500"
+    },
+    {
+      "Unnamed: 0": "09-Oct-2025",
+      "Unnamed: 1": "Farhan cheema",
+      "Unnamed: 2": "7,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "17,500"
+    },
+    {
+      "Unnamed: 0": "09-Oct-2025",
+      "Unnamed: 1": "Saad",
+      "Unnamed: 2": "84",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "17,584"
+    },
+    {
+      "Unnamed: 0": "09-Oct-2025",
+      "Unnamed: 1": "Zubair Mughal",
+      "Unnamed: 2": "2,500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "20,084"
+    },
+    {
+      "Unnamed: 0": "12-Oct-2025",
+      "Unnamed: 1": "hamza Mughal",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "21,084"
+    },
+    {
+      "Unnamed: 0": "17-Oct-2025",
+      "Unnamed: 1": "Hassan Chattha",
+      "Unnamed: 2": "2,600",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "23,684"
+    },
+    {
+      "Unnamed: 0": "17-Oct-2025",
+      "Unnamed: 1": "Hafiz sufyan",
+      "Unnamed: 2": "16,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "39,684"
+    },
+    {
+      "Unnamed: 0": "17-Oct-2025",
+      "Unnamed: 1": "Hassan Chattha",
+      "Unnamed: 2": "1,400",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "41,084"
+    },
+    {
+      "Unnamed: 0": "17-Oct-2025",
+      "Unnamed: 1": "11 package \ud83d\udce6",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "32,300",
+      "Unnamed: 4": "8,784"
+    },
+    {
+      "Unnamed: 0": "01-Nov-2025",
+      "Unnamed: 1": "Zubair Mughal Nov-Dec",
+      "Unnamed: 2": "5,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "13,784"
+    },
+    {
+      "Unnamed: 0": "18-Nov-2025",
+      "Unnamed: 1": "Hassan chatha",
+      "Unnamed: 2": "4,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "17,784"
+    },
+    {
+      "Unnamed: 0": "18-Nov-2025",
+      "Unnamed: 1": "Hafiz sufyan",
+      "Unnamed: 2": "4,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "21,784"
+    },
+    {
+      "Unnamed: 0": "18-Nov-2025",
+      "Unnamed: 1": "Farhan cheema",
+      "Unnamed: 2": "10,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "31,784"
+    },
+    {
+      "Unnamed: 0": "18-Nov-2025",
+      "Unnamed: 1": "Ali chatha",
+      "Unnamed: 2": "3,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "34,784"
+    },
+    {
+      "Unnamed: 0": "18-Nov-2025",
+      "Unnamed: 1": "Zain Shah Nov-Dec",
+      "Unnamed: 2": "5,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "39,784"
+    },
+    {
+      "Unnamed: 0": "18-Nov-2025",
+      "Unnamed: 1": "Ustad Babri",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "40,784"
+    },
+    {
+      "Unnamed: 0": "26-Nov-2025",
+      "Unnamed: 1": "Yasir",
+      "Unnamed: 2": "500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "41,284"
+    },
+    {
+      "Unnamed: 0": "01-Dec-2025",
+      "Unnamed: 1": "November Package \ud83d\udce6",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "21,000",
+      "Unnamed: 4": "20,284"
+    },
+    {
+      "Unnamed: 0": "01-Dec-2025",
+      "Unnamed: 1": "Usman mughal",
+      "Unnamed: 2": "800",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "21,084"
+    },
+    {
+      "Unnamed: 0": "10-Dec-2025",
+      "Unnamed: 1": "Ali chatha",
+      "Unnamed: 2": "3,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "24,084"
+    },
+    {
+      "Unnamed: 0": "10-Dec-2025",
+      "Unnamed: 1": "Farhan cheema",
+      "Unnamed: 2": "7,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "31,084"
+    },
+    {
+      "Unnamed: 0": "05-Jan-2026",
+      "Unnamed: 1": "Ali chatha",
+      "Unnamed: 2": "3,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "34,084"
+    },
+    {
+      "Unnamed: 0": "06-Jan-2026",
+      "Unnamed: 1": "Zubair Mughal-January",
+      "Unnamed: 2": "2,500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "36,584"
+    },
+    {
+      "Unnamed: 0": "10-Jan-2026",
+      "Unnamed: 1": "Hassan chatha",
+      "Unnamed: 2": "4,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "40,584"
+    },
+    {
+      "Unnamed: 0": "12-Jan-2026",
+      "Unnamed: 1": "Hafiz sufyan",
+      "Unnamed: 2": "4,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "44,584"
+    },
+    {
+      "Unnamed: 0": "12-Jan-2026",
+      "Unnamed: 1": "Zain Shah Jan-Feb",
+      "Unnamed: 2": "5,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "49,584"
+    },
+    {
+      "Unnamed: 0": "28-Jan-2026",
+      "Unnamed: 1": "Farhan cheema January-Feb",
+      "Unnamed: 2": "15,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "64,584"
+    },
+    {
+      "Unnamed: 0": "06-Feb-2026",
+      "Unnamed: 1": "Ali chatha",
+      "Unnamed: 2": "3,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "67,584"
+    },
+    {
+      "Unnamed: 0": "07-Feb-2026",
+      "Unnamed: 1": "Hafiz sufyan",
+      "Unnamed: 2": "4,400",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "71,984"
+    },
+    {
+      "Unnamed: 0": "14-Feb-2026",
+      "Unnamed: 1": "Allah da Banda",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "72,984"
+    },
+    {
+      "Unnamed: 0": "14-Feb-2026",
+      "Unnamed: 1": "Syed Moin Gilani",
+      "Unnamed: 2": "6,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "78,984"
+    },
+    {
+      "Unnamed: 0": "15-Feb-2026",
+      "Unnamed: 1": "Tayyab Mughal",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "79,984"
+    },
+    {
+      "Unnamed: 0": "15-Feb-2026",
+      "Unnamed: 1": "Hamid Ur din Gilani",
+      "Unnamed: 2": "6,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "85,984"
+    },
+    {
+      "Unnamed: 0": "16-Feb-2026",
+      "Unnamed: 1": "Hassan chatha",
+      "Unnamed: 2": "4,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "89,984"
+    },
+    {
+      "Unnamed: 0": "17-Feb-2026",
+      "Unnamed: 1": "12 Ramzan Package \ud83d\udce6, 300 ki Khajoor gaon SE ek package m",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "35,050",
+      "Unnamed: 4": "54,934"
+    },
+    {
+      "Unnamed: 0": "18-Feb-2026",
+      "Unnamed: 1": "Usman Mughal Bhai",
+      "Unnamed: 2": "500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "55,434"
+    },
+    {
+      "Unnamed: 0": "23-Feb-2026",
+      "Unnamed: 1": "Zain Gilani (For 10 other new ppl)",
+      "Unnamed: 2": "40,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "95,434"
+    },
+    {
+      "Unnamed: 0": "23-Feb-2026",
+      "Unnamed: 1": "zain bukhari bag of sugar",
+      "Unnamed: 2": "7,500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "102,934"
+    },
+    {
+      "Unnamed: 0": "23-Feb-2026",
+      "Unnamed: 1": "Zain Bukhari March-April",
+      "Unnamed: 2": "5,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "107,934"
+    },
+    {
+      "Unnamed: 0": "23-Feb-2026",
+      "Unnamed: 1": "10 New Packages \ud83d\udce6",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "29,030",
+      "Unnamed: 4": "78,904"
+    },
+    {
+      "Unnamed: 0": "23-Feb-2026",
+      "Unnamed: 1": "Cheeni Ka Bag + 100rs Petrol",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "7,450",
+      "Unnamed: 4": "71,454"
+    },
+    {
+      "Unnamed: 0": "23-Feb-2026",
+      "Unnamed: 1": "From Zain Shah, Cheeni Lani ha,",
+      "Unnamed: 2": "2,100",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "73,554"
+    },
+    {
+      "Unnamed: 0": "02-Mar-2026",
+      "Unnamed: 1": "2 package \ud83d\udce6 (Kot khizri + Natt kallan)",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "5,700",
+      "Unnamed: 4": "67,854"
+    },
+    {
+      "Unnamed: 0": "07-Mar-2026",
+      "Unnamed: 1": "Zamaad Khalid Awan (Saad Hamad)",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "68,854"
+    },
+    {
+      "Unnamed: 0": "12-Mar-2026",
+      "Unnamed: 1": "Ali chatha",
+      "Unnamed: 2": "3,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "71,854"
+    },
+    {
+      "Unnamed: 0": "12-Mar-2026",
+      "Unnamed: 1": "Zubair Mughal",
+      "Unnamed: 2": "4,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "75,854"
+    },
+    {
+      "Unnamed: 0": "12-Mar-2026",
+      "Unnamed: 1": "Syed Zain-Moin-Jalal-Sohaib",
+      "Unnamed: 2": "55,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "130,854"
+    },
+    {
+      "Unnamed: 0": "15-Mar-2026",
+      "Unnamed: 1": "Farhan cheema",
+      "Unnamed: 2": "15,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "145,854"
+    },
+    {
+      "Unnamed: 0": "15-Mar-2026",
+      "Unnamed: 1": "Usman Mughal Bhai",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "146,854"
+    },
+    {
+      "Unnamed: 0": "15-Mar-2026",
+      "Unnamed: 1": "Yasir Chehal",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "147,854"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "Ali Raza (Reference Zain Shah)",
+      "Unnamed: 2": "500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "148,354"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "Jawad Ahmad",
+      "Unnamed: 2": "500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "148,854"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "Tayyab Mughal",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "149,854"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "Ustad Babri",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "150,854"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "Hassan Chattha",
+      "Unnamed: 2": "4,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "154,854"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "Hafiz sufyan",
+      "Unnamed: 2": "5,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "159,854"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "22 Packages",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "76,000",
+      "Unnamed: 4": "83,854"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "100 Kg aalo + 45 kg Pyaas",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "4,700",
+      "Unnamed: 4": "79,154"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "2.5kg and 10 kg shapar",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "1,000",
+      "Unnamed: 4": "78,154"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "Old Amount, Lum sum - (Return to Trust)",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "95,000",
+      "Unnamed: 4": "-16,846"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "Hanzla, Cash",
+      "Unnamed: 2": "500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-16,346"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "Tariq rehmani (Mandi se Gaon saman )",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "700",
+      "Unnamed: 4": "-17,046"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "Asim Cheema",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-16,046"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "Zain Aujla",
+      "Unnamed: 2": "1,500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-14,546"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "Hamid Ur din Gilani",
+      "Unnamed: 2": "1,500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-13,046"
+    },
+    {
+      "Unnamed: 0": "16-Mar-2026",
+      "Unnamed: 1": "Haldi packs 2",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "200",
+      "Unnamed: 4": "-13,246"
+    },
+    {
+      "Unnamed: 0": "17-Mar-2026",
+      "Unnamed: 1": "5 Packages Remaining, Now Total 27",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "18,800",
+      "Unnamed: 4": "-32,046"
+    },
+    {
+      "Unnamed: 0": "17-Mar-2026",
+      "Unnamed: 1": "Dani Aujla - Cash in Hand",
+      "Unnamed: 2": "10,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-22,046"
+    },
+    {
+      "Unnamed: 0": "17-Mar-2026",
+      "Unnamed: 1": "Alo and Leson in 5 remaing package",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "1,300",
+      "Unnamed: 4": "-23,346"
+    },
+    {
+      "Unnamed: 0": "18-Mar-2026",
+      "Unnamed: 1": "Hassan Kolar",
+      "Unnamed: 2": "3,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-20,346"
+    },
+    {
+      "Unnamed: 0": "19-Mar-2026",
+      "Unnamed: 1": "Baba Saab Medicine",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "10,000",
+      "Unnamed: 4": "-30,346"
+    },
+    {
+      "Unnamed: 0": "19-Mar-2026",
+      "Unnamed: 1": "Imran Minhas",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "3,000",
+      "Unnamed: 4": "-33,346"
+    },
+    {
+      "Unnamed: 0": "19-Mar-2026",
+      "Unnamed: 1": "From Zain Gilani",
+      "Unnamed: 2": "64,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "30,654"
+    },
+    {
+      "Unnamed: 0": "19-Mar-2026",
+      "Unnamed: 1": "29 Eidi Envelop 26-1500 3-2000",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "44,500",
+      "Unnamed: 4": "-13,846"
+    },
+    {
+      "Unnamed: 0": "19-Mar-2026",
+      "Unnamed: 1": "Scales for Wahab Trust,",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "4,500",
+      "Unnamed: 4": "-18,346"
+    },
+    {
+      "Unnamed: 0": "19-Mar-2026",
+      "Unnamed: 1": "2 Person,s Eidi by zain",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "2,000",
+      "Unnamed: 4": "-20,346"
+    },
+    {
+      "Unnamed: 0": "19-Mar-2026",
+      "Unnamed: 1": "Ali Rehmani",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-19,346"
+    },
+    {
+      "Unnamed: 0": "19-Mar-2026",
+      "Unnamed: 1": "Fitrana From Asim Cheema",
+      "Unnamed: 2": "2,400",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-16,946"
+    },
+    {
+      "Unnamed: 0": "20-Mar-2026",
+      "Unnamed: 1": "Eidi for Hafiz abid Mochi",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "1,500",
+      "Unnamed: 4": "-18,446"
+    },
+    {
+      "Unnamed: 0": "20-Mar-2026",
+      "Unnamed: 1": "Hanzla, Cash, Fitrana",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-17,446"
+    },
+    {
+      "Unnamed: 0": "21-Mar-2026",
+      "Unnamed: 1": "Eidi to 2 Needy people",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "2,000",
+      "Unnamed: 4": "-19,446"
+    },
+    {
+      "Unnamed: 0": "08-Apr-2026",
+      "Unnamed: 1": "Ali chatha",
+      "Unnamed: 2": "3,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-16,446"
+    },
+    {
+      "Unnamed: 0": "08-Apr-2026",
+      "Unnamed: 1": "Bilal Cheema",
+      "Unnamed: 2": "2,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-14,446"
+    },
+    {
+      "Unnamed: 0": "08-Apr-2026",
+      "Unnamed: 1": "Zain Bukhari",
+      "Unnamed: 2": "5,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-9,446"
+    },
+    {
+      "Unnamed: 0": "10-Apr-2026",
+      "Unnamed: 1": "Zain Aujla Kala Pani",
+      "Unnamed: 2": "2,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-7,446"
+    },
+    {
+      "Unnamed: 0": "11-Apr-2026",
+      "Unnamed: 1": "Yasir Chehal",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-6,446"
+    },
+    {
+      "Unnamed: 0": "12-Apr-2026",
+      "Unnamed: 1": "Allah da Banda",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-5,446"
+    },
+    {
+      "Unnamed: 0": "14-Apr-2026",
+      "Unnamed: 1": "Usman mughal",
+      "Unnamed: 2": "500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-4,946"
+    },
+    {
+      "Unnamed: 0": "14-Apr-2026",
+      "Unnamed: 1": "Hassan Chattha",
+      "Unnamed: 2": "4,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-946"
+    },
+    {
+      "Unnamed: 0": "14-Apr-2026",
+      "Unnamed: 1": "Zubair Mughal",
+      "Unnamed: 2": "2,500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "1,554"
+    },
+    {
+      "Unnamed: 0": "14-Apr-2026",
+      "Unnamed: 1": "30 Bags for Saman",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "1,000",
+      "Unnamed: 4": "554"
+    },
+    {
+      "Unnamed: 0": "15-Apr-2026",
+      "Unnamed: 1": "Ali Raza Saith",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "1,554"
+    },
+    {
+      "Unnamed: 0": "16-Apr-2026",
+      "Unnamed: 1": "Ammad Gill",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "2,554"
+    },
+    {
+      "Unnamed: 0": "20-Apr-2026",
+      "Unnamed: 1": "Zain Gillani",
+      "Unnamed: 2": "52,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "54,554"
+    },
+    {
+      "Unnamed: 0": "20-Apr-2026",
+      "Unnamed: 1": "30 Bags for Saman",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "79,200",
+      "Unnamed: 4": "-24,646"
+    },
+    {
+      "Unnamed: 0": "20-Apr-2026",
+      "Unnamed: 1": "Danish Aujla - Cash in Hand",
+      "Unnamed: 2": "10,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-14,646"
+    },
+    {
+      "Unnamed: 0": "20-Apr-2026",
+      "Unnamed: 1": "Qaiser Ghuman (To zain shah)",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-13,646"
+    },
+    {
+      "Unnamed: 0": "11-May-2026",
+      "Unnamed: 1": "Mashood Aujla",
+      "Unnamed: 2": "49,350",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "35,704"
+    },
+    {
+      "Unnamed: 0": "13-May-2026",
+      "Unnamed: 1": "Ali chatha",
+      "Unnamed: 2": "3,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "38,704"
+    },
+    {
+      "Unnamed: 0": "14-May-2026",
+      "Unnamed: 1": "Zain Aujla",
+      "Unnamed: 2": "2,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "40,704"
+    },
+    {
+      "Unnamed: 0": "14-May-2026",
+      "Unnamed: 1": "Bilal Cheema",
+      "Unnamed: 2": "2,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "42,704"
+    },
+    {
+      "Unnamed: 0": "14-May-2026",
+      "Unnamed: 1": "Zain Gillani",
+      "Unnamed: 2": "6,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "48,704"
+    },
+    {
+      "Unnamed: 0": "14-May-2026",
+      "Unnamed: 1": "Zain Gillani",
+      "Unnamed: 2": "34,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "82,704"
+    },
+    {
+      "Unnamed: 0": "14-May-2026",
+      "Unnamed: 1": "Yasir Chehal",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "83,704"
+    },
+    {
+      "Unnamed: 0": "19-May-2026",
+      "Unnamed: 1": "zain bukhari (May-June)",
+      "Unnamed: 2": "5,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "88,704"
+    },
+    {
+      "Unnamed: 0": "19-May-2026",
+      "Unnamed: 1": "Hafiz sufyan",
+      "Unnamed: 2": "4,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "92,704"
+    },
+    {
+      "Unnamed: 0": "19-May-2026",
+      "Unnamed: 1": "Zain Gillani",
+      "Unnamed: 2": "6,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "98,704"
+    },
+    {
+      "Unnamed: 0": "24-May-2026",
+      "Unnamed: 1": "Ustad Babri",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "99,704"
+    },
+    {
+      "Unnamed: 0": "24-May-2026",
+      "Unnamed: 1": "Bags + Plastic Bags + Mirch and Pyaz",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "3,000",
+      "Unnamed: 4": "96,704"
+    },
+    {
+      "Unnamed: 0": "24-May-2026",
+      "Unnamed: 1": "Transport from Ghakhar to Village",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "1,000",
+      "Unnamed: 4": "95,704"
+    },
+    {
+      "Unnamed: 0": "24-May-2026",
+      "Unnamed: 1": "Sabzi, 32kg tamatar, 32 kg mirch, 64kg pyaz, 192kg aalo",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "9,600",
+      "Unnamed: 4": "86,104"
+    },
+    {
+      "Unnamed: 0": "26-May-2026",
+      "Unnamed: 1": "30 Bags ka saman",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "86,210",
+      "Unnamed: 4": "-106"
+    },
+    {
+      "Unnamed: 0": "26-May-2026",
+      "Unnamed: 1": "2 Bags (Wazirabad and Natt Kallan)",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "4,930",
+      "Unnamed: 4": "-5,036"
+    },
+    {
+      "Unnamed: 0": "26-May-2026",
+      "Unnamed: 1": "Ammad Gill",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-4,036"
+    },
+    {
+      "Unnamed: 0": "26-May-2026",
+      "Unnamed: 1": null,
+      "Unnamed: 2": "36",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-4,000"
+    },
+    {
+      "Unnamed: 0": "11-Jun-2026",
+      "Unnamed: 1": "Ali chatha June",
+      "Unnamed: 2": "3,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "-1,000"
+    },
+    {
+      "Unnamed: 0": "11-Jun-2026",
+      "Unnamed: 1": "Zubair Mughal-May",
+      "Unnamed: 2": "2,500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "1,500"
+    },
+    {
+      "Unnamed: 0": "13-Jun-2026",
+      "Unnamed: 1": "Usman Mughal Bhai",
+      "Unnamed: 2": "1,500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "3,000"
+    },
+    {
+      "Unnamed: 0": "13-Jun-2026",
+      "Unnamed: 1": "Bilal Cheema",
+      "Unnamed: 2": "2,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "5,000"
+    },
+    {
+      "Unnamed: 0": "13-Jun-2026",
+      "Unnamed: 1": "Ustad Babri",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "6,000"
+    },
+    {
+      "Unnamed: 0": "14-Jun-2026",
+      "Unnamed: 1": "Zubair Mughal",
+      "Unnamed: 2": "2,500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "8,500"
+    },
+    {
+      "Unnamed: 0": "14-Jun-2026",
+      "Unnamed: 1": "Hafiz sufyan",
+      "Unnamed: 2": "4,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "12,500"
+    },
+    {
+      "Unnamed: 0": "14-Jun-2026",
+      "Unnamed: 1": "Hamid Ur din Gilani",
+      "Unnamed: 2": "3,500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "16,000"
+    },
+    {
+      "Unnamed: 0": "14-Jun-2026",
+      "Unnamed: 1": "Zain Gillani",
+      "Unnamed: 2": "5,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "21,000"
+    },
+    {
+      "Unnamed: 0": "16-Jun-2026",
+      "Unnamed: 1": "Zain Gillani",
+      "Unnamed: 2": "30,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "51,000"
+    },
+    {
+      "Unnamed: 0": "16-Jun-2026",
+      "Unnamed: 1": null,
+      "Unnamed: 2": "6,500",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "57,500"
+    },
+    {
+      "Unnamed: 0": "16-Jun-2026",
+      "Unnamed: 1": "Hassan chatha",
+      "Unnamed: 2": "4,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "61,500"
+    },
+    {
+      "Unnamed: 0": "16-Jun-2026",
+      "Unnamed: 1": "Ali bhatti Burger",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "62,500"
+    },
+    {
+      "Unnamed: 0": "16-Jun-2026",
+      "Unnamed: 1": "Dani Aujla",
+      "Unnamed: 2": "15,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "77,500"
+    },
+    {
+      "Unnamed: 0": "16-Jun-2026",
+      "Unnamed: 1": "Husnain Kolar",
+      "Unnamed: 2": "25,159",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "102,659"
+    },
+    {
+      "Unnamed: 0": "17-Jun-2026",
+      "Unnamed: 1": "29 Packages saman",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "93,870",
+      "Unnamed: 4": "8,789"
+    },
+    {
+      "Unnamed: 0": "17-Jun-2026",
+      "Unnamed: 1": "2kg shapar",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "500",
+      "Unnamed: 4": "8,289"
+    },
+    {
+      "Unnamed: 0": "17-Jun-2026",
+      "Unnamed: 1": "Tariq rehmani (Mandi se Gaon saman )",
+      "Unnamed: 2": "0",
+      "Unnamed: 3": "850",
+      "Unnamed: 4": "7,439"
+    },
+    {
+      "Unnamed: 0": "18-Jun-2026",
+      "Unnamed: 1": "Asim Cheema",
+      "Unnamed: 2": "1,000",
+      "Unnamed: 3": "0",
+      "Unnamed: 4": "8,439"
+    },
+    {
+      "Unnamed: 0": null,
+      "Unnamed: 1": null,
+      "Unnamed: 2": "Total Cash In",
+      "Unnamed: 3": "684,329",
+      "Unnamed: 4": null
+    },
+    {
+      "Unnamed: 0": null,
+      "Unnamed: 1": null,
+      "Unnamed: 2": "Total Cash Out",
+      "Unnamed: 3": "675,890",
+      "Unnamed: 4": null
+    },
+    {
+      "Unnamed: 0": null,
+      "Unnamed: 1": null,
+      "Unnamed: 2": "Balance",
+      "Unnamed: 3": "8,439",
+      "Unnamed: 4": null
+    }
+  ]
+}

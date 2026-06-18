@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Wahab Trust - Financial Transparency Portal</title>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <div class="brand-section">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-hand-holding-heart fa-xl"></i>
+                </div>
+                <div class="brand-title">
+                    <h1 id="brand-main-title">Al Wahab Trust</h1>
+                    <p id="brand-sub-title">Financial Transparency Ledger &bull; Aujla Khurd, Pakistan</p>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <!-- Language Toggle Button -->
+                <button class="mode-btn" id="btn-lang-toggle" onclick="toggleLanguage()" style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); border-radius:30px; padding:8px 18px; color:white;">
+                    <i class="fa-solid fa-language"></i> <span id="lang-btn-text">اردو</span>
+                </button>
+
+                <!-- Toggle View Mode (Donor Privacy Safeguard) -->
+                <div class="mode-toggle-group">
+                    <button class="mode-btn active" id="btn-public-view" onclick="switchViewMode('public')">
+                        <i class="fa-solid fa-shield-halved"></i> <span id="view-public-text">Public View</span>
+                    </button>
+                    <button class="mode-btn" id="btn-admin-view" onclick="switchViewMode('admin')">
+                        <i class="fa-solid fa-lock-open"></i> <span id="view-admin-text">Admin View</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Intro Message -->
+        <div class="hero-intro">
+            <p id="hero-desc-text">
+                <strong>Empowering Our Village:</strong> Welcome to the Al Wahab Trust financial ledger. 
+                We raise donations primarily from overseas and local supporters, purchasing vital life necessities 
+                (potatoes, onions, sugar, flour, ghee, spices) in wholesale markets, packing them into individual relief bags, and distributing them to needy households in Aujla Khurd. 
+                This portal is created to ensure absolute transparency. Explore the month-by-month transactions and click the receipt buttons to view the actual bank/EasyPaisa receipts or physical paper bills.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main>
+        <!-- Statistics Panel -->
+        <section class="stats-grid">
+            <div class="stat-card intake">
+                <div class="stat-header">
+                    <span class="stat-label" id="label-total-income">Total Intakes (Donations)</span>
+                    <div class="stat-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                </div>
+                <div class="stat-value" id="card-total-income">Rs. 0</div>
+                <div class="stat-meta" id="card-income-count">0 donations</div>
+            </div>
+            
+            <div class="stat-card outlay">
+                <div class="stat-header">
+                    <span class="stat-label" id="label-total-expense">Total Outlays (Expenses)</span>
+                    <div class="stat-icon"><i class="fa-solid fa-arrow-trend-down"></i></div>
+                </div>
+                <div class="stat-value" id="card-total-expense">Rs. 0</div>
+                <div class="stat-meta" id="card-expense-count">0 expenses</div>
+            </div>
+            
+            <div class="stat-card balance">
+                <div class="stat-header">
+                    <span class="stat-label" id="label-balance">Remaining Balance</span>
+                    <div class="stat-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                </div>
+                <div class="stat-value" id="card-balance">Rs. 0</div>
+                <div class="stat-meta" id="label-balance-meta">Net cash in hand</div>
+            </div>
+            
+            <div class="stat-card packages">
+                <div class="stat-header">
+                    <span class="stat-label" id="label-packages">Bags Distributed</span>
+                    <div class="stat-icon"><i class="fa-solid fa-box-open"></i></div>
+                </div>
+                <div class="stat-value" id="card-packages">0</div>
+                <div class="stat-meta" id="label-packages-meta">Food relief packages</div>
+            </div>
+        </section>
+
+        <!-- Dynamic Timeline Month Selector -->
+        <section class="timeline-card">
+            <div class="timeline-title" id="label-filter-month">Filter by Month</div>
+            <div class="timeline-scroll" id="month-timeline">
+                <!-- JavaScript will generate months here -->
+            </div>
+        </section>
+
+        <!-- Admin Management Panel (Dashed border, hidden by default) -->
+        <section class="admin-section" id="admin-panel">
+            <div class="admin-header">
+                <div class="admin-title">
+                    <i class="fa-solid fa-circle-nodes"></i> Admin Management & Database Controls
+                </div>
+                <div class="admin-actions-row">
+                    <button class="btn-secondary" onclick="exportDataJSON()">
+                        <i class="fa-solid fa-file-export"></i> Export JSON Backup
+                    </button>
+                    <button class="btn-secondary" onclick="document.getElementById('import-file-input').click()">
+                        <i class="fa-solid fa-file-import"></i> Import JSON Backup
+                    </button>
+                    <button class="btn-secondary" onclick="resetToDefaultData()">
+                        <i class="fa-solid fa-rotate-left"></i> Reset to Seed Data
+                    </button>
+                    <input type="file" id="import-file-input" style="display:none;" onchange="importDataJSON(event)" accept=".json">
+                </div>
+            </div>
+
+            <!-- Transaction Addition Form -->
+            <form id="add-transaction-form" onsubmit="handleAddTransaction(event)">
+                <div class="entry-form-grid">
+                    <div class="form-group">
+                        <label for="form-date">Transaction Date</label>
+                        <input type="date" id="form-date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-type">Type</label>
+                        <select id="form-type" class="form-control" onchange="toggleFormNotesLabel()" required>
+                            <option value="income">Intake (Donation Received)</option>
+                            <option value="expense">Outlay (Expense Paid)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label id="form-notes-label" for="form-notes">Donor Name</label>
+                        <input type="text" id="form-notes" class="form-control" placeholder="e.g., Saad or Vegetable Purchase" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-amount">Amount (PKR)</label>
+                        <input type="number" id="form-amount" class="form-control" min="1" step="any" placeholder="e.g., 5000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-category">Category</label>
+                        <select id="form-category" class="form-control" required>
+                            <option value="Donation">Donation</option>
+                            <option value="Groceries">Groceries / Food Items</option>
+                            <option value="Packaging">Packaging Supplies</option>
+                            <option value="Logistics">Logistics / Mandi Transport</option>
+                            <option value="Eidi / Eid Support">Eidi / Eid Support</option>
+                            <option value="Medical">Medical Support</option>
+                            <option value="Equipment / Tools">Equipment / Tools</option>
+                            <option value="Other">Other Expense</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-receipt">Attach Receipt Image</label>
+                        <input type="file" id="form-receipt" class="form-control" accept="image/*">
+                    </div>
+                </div>
+                <div class="btn-submit-row">
+                    <button type="submit" class="btn-primary">
+                        <i class="fa-solid fa-plus"></i> Save Transaction Entry
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Visualization Charts Row -->
+        <section class="visuals-container">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <span class="chart-title">Month-over-Month Cash Flows</span>
+                </div>
+                <div class="chart-canvas-wrapper">
+                    <canvas id="cashflowChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-card">
+                <div class="chart-header">
+                    <span class="chart-title">Expense Breakdown</span>
+                </div>
+                <div class="chart-canvas-wrapper">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ledger ledger control bar -->
+        <section class="ledger-controls">
+            <!-- Search field -->
+            <div class="search-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="search-bar" class="search-input" onkeyup="handleFilterChange()" placeholder="Search description, items, or notes...">
+            </div>
+
+            <!-- Ledger filters tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" id="tab-all" onclick="setLedgerFilter('all')">All Entries</button>
+                <button class="filter-tab" id="tab-income" onclick="setLedgerFilter('income')">Intakes (Donations)</button>
+                <button class="filter-tab" id="tab-expense" onclick="setLedgerFilter('expense')">Outlays (Expenses)</button>
+            </div>
+        </section>
+
+        <!-- Main Ledger Table Container -->
+        <section class="ledger-card">
+            <div class="ledger-header">
+                <div class="ledger-title" id="ledger-table-title">All Financial Entries</div>
+                <div class="export-btn-group">
+                    <button class="btn-secondary" onclick="exportDataCSV()">
+                        <i class="fa-solid fa-file-excel"></i> <span id="btn-export-text">Export to Excel (CSV)</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="ledger-table" id="transaction-table">
+                    <thead>
+                        <tr>
+                            <th id="th-date">Date</th>
+                            <th id="th-type">Type</th>
+                            <th id="th-desc">Description</th>
+                            <th id="th-cat">Category</th>
+                            <th id="th-amount">Amount (PKR)</th>
+                            <th id="th-receipt">Receipt</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ledger-table-body">
+                        <!-- Entries populated dynamically by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Receipt Viewer Overlay -->
+    <div class="modal-overlay" id="receipt-modal" onclick="closeReceiptModal(event)">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <span class="modal-title" id="modal-receipt-title">Transaction Receipt</span>
+                <button class="modal-close" onclick="closeReceiptModal(event)">
+                    <i class="fa-solid fa-xmark fa-lg"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-receipt-body">
+                <!-- Receipt images or digital mockup rendered by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin View Key Modal Simulation (For simulated visual access control) -->
+    <div class="modal-overlay" id="admin-passcode-modal">
+        <div class="modal-container" style="max-width:350px;">
+            <div class="modal-header">
+                <span class="modal-title">Admin View Authentication</span>
+                <button class="modal-close" onclick="cancelAdminUnlock()">
+                    <i class="fa-solid fa-xmark fa-lg"></i>
+                </button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <p style="font-size:14px; color:var(--text-muted); margin-bottom:15px; text-align:center;">
+                    Please enter the administrator passcode to reveal unmasked names and active management.
+                </p>
+                <div class="form-group" style="margin-bottom:15px;">
+                    <input type="password" id="admin-passcode-input" class="form-control" placeholder="Enter Passcode" style="text-align:center; font-size:18px; letter-spacing:4px;" autofocus>
+                </div>
+                <p id="admin-error-msg" style="color:var(--danger-color); font-size:12px; margin-bottom:10px; display:none; text-align:center;">
+                    Incorrect passcode! (Default passcode is <b>1234</b>)
+                </p>
+                <div style="display:flex; justify-content:space-between; width:100%; gap:10px;">
+                    <button class="btn-secondary" style="flex:1;" onclick="cancelAdminUnlock()">Cancel</button>
+                    <button class="btn-primary" style="flex:1;" onclick="submitAdminUnlock()">Unlock</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footnote Credits -->
+    <footer style="text-align:center; padding: 20px; font-size: 13px; color: var(--text-muted);">
+        Al Wahab Trust Transparency Ledger &bull; Built with focus on donor privacy and full visual traceability.
+    </footer>
+
+    <!-- JS Files -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
