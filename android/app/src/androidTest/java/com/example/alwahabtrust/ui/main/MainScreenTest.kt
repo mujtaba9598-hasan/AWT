@@ -1,26 +1,36 @@
 package com.example.alwahabtrust.ui.main
 
 import androidx.activity.ComponentActivity
+import androidx.compose.ui.test.assertExists
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import com.example.alwahabtrust.model.TrustAppState
+import com.example.alwahabtrust.theme.AlWahabTrustTheme
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-/** UI tests for [com.example.alwahabtrust.ui.main.MainScreen]. */
 class MainScreenTest {
-
   @get:Rule val composeTestRule = createAndroidComposeRule<ComponentActivity>()
 
   @Before
   fun setup() {
-    composeTestRule.setContent { MainScreen(FAKE_DATA) }
+    composeTestRule.setContent {
+      AlWahabTrustTheme {
+        MainScreenContent(
+          state = MainScreenUiState(appState = TrustAppState.sample()),
+          onUnlockAdmin = {},
+          onLockAdmin = {},
+          onToggleLanguage = {},
+          onAddTransaction = {},
+        )
+      }
+    }
   }
 
   @Test
-  fun firstItem_exists() {
-    FAKE_DATA.forEach { composeTestRule.onNodeWithText("Hello $it!").assertExists() }
+  fun overviewContent_exists() {
+    composeTestRule.onNodeWithText("Total funds").assertExists()
+    composeTestRule.onNodeWithText("Recent activity").assertExists()
   }
 }
-
-private val FAKE_DATA = listOf("Sample1", "Sample2", "Sample3")

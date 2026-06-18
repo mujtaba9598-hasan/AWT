@@ -1,50 +1,66 @@
 package com.example.alwahabtrust.theme
 
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
-
-private val DarkColorScheme = darkColorScheme(primary = Purple80, secondary = PurpleGrey80, tertiary = Pink80)
+import androidx.compose.ui.graphics.Color
 
 private val LightColorScheme =
   lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40,
+    primary = EmeraldDeep,
+    onPrimary = SandSurface,
+    primaryContainer = MintMist,
+    onPrimaryContainer = Ink,
+    secondary = EmeraldSoft,
+    onSecondary = SandSurface,
+    secondaryContainer = Color(0xFFE9F4EF),
+    onSecondaryContainer = Ink,
+    tertiary = BronzeWarm,
+    onTertiary = SandSurface,
+    tertiaryContainer = Color(0xFFF4E6D8),
+    onTertiaryContainer = Ink,
+    background = Color(0xFFF4F0E8),
+    onBackground = Ink,
+    surface = Color(0xFFFFFBF5),
+    onSurface = Ink,
+    surfaceVariant = Color(0xFFE6E0D6),
+    onSurfaceVariant = Stone,
+    error = CoralAccent,
+  )
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+private val DarkColorScheme =
+  darkColorScheme(
+    primary = MintMist,
+    onPrimary = NightEmerald,
+    primaryContainer = EmeraldDeep,
+    onPrimaryContainer = MintMist,
+    secondary = Color(0xFF9DD3C0),
+    onSecondary = NightEmerald,
+    secondaryContainer = EmeraldSoft,
+    onSecondaryContainer = MintMist,
+    tertiary = Color(0xFFE8C49C),
+    onTertiary = NightEmerald,
+    tertiaryContainer = BronzeWarm,
+    onTertiaryContainer = SandSurface,
+    background = NightEmerald,
+    onBackground = SandSurface,
+    surface = NightSurface,
+    onSurface = SandSurface,
+    surfaceVariant = Color(0xFF244139),
+    onSurfaceVariant = Color(0xFFBCD2C7),
+    error = Color(0xFFFFB4A2),
   )
 
 @Composable
 fun AlWahabTrustTheme(
   darkTheme: Boolean = isSystemInDarkTheme(),
-  // Dynamic color is available on Android 12+
-  dynamicColor: Boolean = true,
   content: @Composable () -> Unit,
 ) {
-  val colorScheme =
-    when {
-      dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-        val context = LocalContext.current
-        if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-      }
-      darkTheme -> DarkColorScheme
-      else -> LightColorScheme
-    }
-
-  MaterialTheme(colorScheme = colorScheme, typography = Typography, content = content)
+  MaterialTheme(
+    colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme,
+    typography = Typography,
+    content = content,
+  )
 }

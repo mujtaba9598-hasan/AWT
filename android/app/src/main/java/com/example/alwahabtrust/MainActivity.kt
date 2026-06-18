@@ -15,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
+import com.example.alwahabtrust.theme.AlWahabTrustTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,43 +23,44 @@ class MainActivity : ComponentActivity() {
         
         enableEdgeToEdge()
         setContent {
-            var webViewRef by remember { mutableStateOf<WebView?>(null) }
-            
-            // Handle system back button to navigate backwards in WebView history
-            BackHandler(enabled = webViewRef?.canGoBack() == true) {
-                webViewRef?.goBack()
-            }
-            
-            AndroidView(
-                modifier = Modifier.fillMaxSize(),
-                factory = { context ->
-                    WebView(context).apply {
-                        layoutParams = ViewGroup.LayoutParams(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.MATCH_PARENT
-                        )
-                        // Settings configuration
-                        settings.javaScriptEnabled = true
-                        settings.allowFileAccess = true
-                        settings.allowContentAccess = true
-                        settings.domStorageEnabled = true // Persist local storage entries
-                        settings.databaseEnabled = true
-                        
-                        webViewClient = object : WebViewClient() {
-                            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                                return false // Let the WebView load the URL internally
-                            }
-                        }
-                        
-                        webViewRef = this
-                        loadUrl("file:///android_asset/index.html")
-                    }
-                },
-                update = {
-                    // Do nothing on state updates
+            AlWahabTrustTheme {
+                var webViewRef by remember { mutableStateOf<WebView?>(null) }
+                
+                // Handle system back button to navigate backwards in WebView history
+                BackHandler(enabled = webViewRef?.canGoBack() == true) {
+                    webViewRef?.goBack()
                 }
-            )
+                
+                AndroidView(
+                    modifier = Modifier.fillMaxSize(),
+                    factory = { context ->
+                        WebView(context).apply {
+                            layoutParams = ViewGroup.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.MATCH_PARENT
+                            )
+                            // Core settings configuration
+                            settings.javaScriptEnabled = true
+                            settings.allowFileAccess = true
+                            settings.allowContentAccess = true
+                            settings.domStorageEnabled = true // Persist local storage entries
+                            settings.databaseEnabled = true
+                            
+                            webViewClient = object : WebViewClient() {
+                                override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                                    return false // Let the WebView load the URL internally
+                                }
+                            }
+                            
+                            webViewRef = this
+                            loadUrl("file:///android_asset/index.html")
+                        }
+                    },
+                    update = {
+                        // Do nothing on state updates
+                    }
+                )
+            }
         }
     }
 }
-

@@ -1,9 +1,9 @@
-// Al Wahab Trust Transparency Portal - Application Logic
+// Al Wahab Trust Transparency Portal - Application Logic (Mobile SPA Edition)
 
 // Historical packages mapper for absolute accuracy of distributed packages
 const HISTORICAL_PACKAGES = {
     "tx_17": 11,  // 11 package 📦 (17-Oct-2025)
-    "tx_25": 7,   // November Package 📦 (01-Dec-2025) - Estimated from 21k cost
+    "tx_25": 7,   // November Package 📦 (01-Dec-2025)
     "tx_43": 12,  // 12 Ramzan Package 📦 (17-Feb-2026)
     "tx_47": 10,  // 10 New Packages 📦 (23-Feb-2026)
     "tx_51": 2,   // 2 package 📦 (Kot khizri + Natt kallan) (02-Mar-2026)
@@ -20,19 +20,18 @@ const HISTORICAL_PACKAGES = {
 const TRANSLATIONS = {
     en: {
         brandTitle: "Al Wahab Trust",
-        brandSub: "Financial Transparency Ledger &bull; Aujla Khurd, Pakistan",
-        heroDesc: "<strong>Empowering Our Village:</strong> Welcome to the Al Wahab Trust financial ledger. We raise donations primarily from overseas and local supporters, purchasing vital life necessities (potatoes, onions, sugar, flour, ghee, spices) in wholesale markets, packing them into individual relief bags, and distributing them to needy households in Aujla Khurd. This portal is created to ensure absolute transparency. Explore the month-by-month transactions and click the receipt buttons to view the actual bank/EasyPaisa receipts or physical paper bills.",
+        brandSub: "Aujla Khurd",
         langBtn: "اردو",
-        viewPublic: "Public View",
-        viewAdmin: "Admin View",
-        lblTotalIncome: "Total Intakes (Donations)",
-        lblTotalExpense: "Total Outlays (Expenses)",
+        viewPublic: "Public",
+        viewAdmin: "Admin",
+        lblTotalIncome: "Total Intakes",
+        lblTotalExpense: "Total Outlays",
         lblBalance: "Remaining Balance",
         lblPackages: "Bags Distributed",
         metaBalance: "Net cash in hand",
         metaPackages: "Food relief packages",
         lblFilterMonth: "Filter by Month",
-        btnExport: "Export to Excel (CSV)",
+        btnExport: "Export to CSV (Excel)",
         thDate: "Date",
         thType: "Type",
         thDesc: "Description",
@@ -40,9 +39,9 @@ const TRANSLATIONS = {
         thAmount: "Amount (PKR)",
         thReceipt: "Receipt",
         searchPlaceholder: "Search description, items, or notes...",
-        tabAll: "All Entries",
-        tabIncome: "Intakes (Donations)",
-        tabExpense: "Outlays (Expenses)",
+        tabAll: "All",
+        tabIncome: "Intakes",
+        tabExpense: "Outlays",
         donationsReceived: "donations received",
         outlaysMade: "outlays made",
         allTime: "All Time",
@@ -52,8 +51,32 @@ const TRANSLATIONS = {
         viewReceipt: "View Receipt",
         noReceipt: "No Receipt",
         linkFile: "Link File",
+        // Admin & Settings Screen Translations
+        titleCharts: "Analytics",
+        titleStats: "Key Metrics",
+        titleAdmin: "Admin Controls",
+        titleSettings: "Settings",
+        lblAddEntryTitle: "Add Transaction Entry",
+        lblAddDate: "Transaction Date",
+        lblAddType: "Type",
+        lblAddNotesIncome: "Donor Name",
+        lblAddNotesExpense: "Expense Description / Notes",
+        lblAddAmount: "Amount (PKR)",
+        lblAddCategory: "Category",
+        lblAddReceipt: "Attach Receipt Image",
+        lblSaveEntryBtn: "Save Transaction Entry",
+        lblDatabaseToolsTitle: "Database Operations",
+        lblExportJson: "Export JSON Backup",
+        lblImportJson: "Import JSON Backup",
+        lblExportCsv: "Export to CSV (Excel)",
+        lblSettingViewmode: "View Mode",
+        lblSettingViewmodeDesc: "Access unmasked audit records",
+        lblSettingLang: "Language / زبان",
+        lblSettingReset: "Reset Database",
+        lblSettingResetDesc: "Wipe changes and restore seed data",
+        lblResetBtn: "Reset Data",
         // Edit modal translations
-        editModalTitle: "Edit Transaction Entry",
+        editModalTitle: "Edit Entry",
         lblEditDate: "Transaction Date",
         lblEditType: "Type",
         lblEditNotesIncome: "Donor Name",
@@ -65,24 +88,35 @@ const TRANSLATIONS = {
         lblChangeReceiptBtn: "Change",
         lblRemoveReceiptBtn: "Remove",
         lblUploadReceiptHelp: "Select an image file to upload receipt.",
-        lblDeleteBtn: "Delete Entry",
+        lblDeleteBtn: "Delete",
         lblCancelBtn: "Cancel",
-        lblSaveChangesBtn: "Save Changes"
+        lblSaveChangesBtn: "Save Changes",
+        // PIN pad
+        pinTitle: "Admin Authentication",
+        pinSubtitle: "Please enter PIN to unlock admin tools",
+        pinCancelBtn: "Cancel",
+        // Navigation labels
+        navLedger: "Ledger",
+        navCharts: "Charts",
+        navStats: "Stats",
+        navAdmin: "Admin",
+        navSettings: "Settings",
+        chartCashflowTitle: "Month-over-Month Cash Flows",
+        chartCategoryTitle: "Expense Breakdown"
     },
     ur: {
         brandTitle: "الوہاب ٹرسٹ",
-        brandSub: "فنانشل ٹرانسپیرنسی لیجر • اوجلہ خورد، پاکستان",
-        heroDesc: "<strong>ہمارے گاؤں کی بہبود:</strong> الوہاب ٹرسٹ کے مالیاتی کھاتے (لیجر) میں خوش آمدید۔ ہم بنیادی طور پر بیرون ملک اور مقامی مخیر حضرات سے عطیات جمع کرتے ہیں، ہول سیل منڈیوں سے ضروریات زندگی (آلو، پیاز، چینی، آٹا، گھی، مصالحے) خریدتے ہیں، انہیں راشن بیگز میں پیک کرتے ہیں اور اوجلہ خورد کے مستحق گھرانوں میں تقسیم کرتے ہیں۔ یہ پورٹل مکمل شفافیت کے لیے بنایا گیا ہے۔ آپ مہینہ وار لین دین کی تفصیلات دیکھ سکتے ہیں اور اصل بینک یا ایزی پیسہ کی رسیدیں اور کاغذی بل دیکھنے کے لیے بٹن پر کلک کر سکتے ہیں۔",
+        brandSub: "اوجلہ خورد",
         langBtn: "English",
-        viewPublic: "عوامی منظر (پبلک)",
-        viewAdmin: "انتظامی منظر (ایڈمن)",
-        lblTotalIncome: "کل عطیات (آمدن)",
-        lblTotalExpense: "کل اخراجات (خرچ)",
+        viewPublic: "پبلک",
+        viewAdmin: "ایڈمن",
+        lblTotalIncome: "کل آمدن (عطیات)",
+        lblTotalExpense: "کل اخراجات",
         lblBalance: "بقیہ رقم (بیلنس)",
-        lblPackages: "تقسیم شدہ راشن بیگز",
-        metaBalance: "کل دستیاب رقم",
+        lblPackages: "تقسیم شدہ بیگز",
+        metaBalance: "کل دستیاب نقد رقم",
         metaPackages: "امدادی راشن بیگز",
-        lblFilterMonth: "مہینے کے لحاظ سے فلٹر کریں",
+        lblFilterMonth: "مہینے کے لحاظ سے فلٹر",
         btnExport: "ایکسل شیٹ ڈاؤن لوڈ کریں",
         thDate: "تاریخ",
         thType: "قسم",
@@ -92,17 +126,41 @@ const TRANSLATIONS = {
         thReceipt: "رسید",
         searchPlaceholder: "تفصیل، اشیاء یا نوٹس تلاش کریں...",
         tabAll: "تمام انٹریز",
-        tabIncome: "عطیات (آمدن)",
-        tabExpense: "اخراجات (خرچ)",
+        tabIncome: "عطیات",
+        tabExpense: "اخراجات",
         donationsReceived: "عطیات موصول ہوئے",
         outlaysMade: "اخراجات کیے گئے",
         allTime: "کل مدت",
         entries: "انٹریز",
-        intake: "آمدن",
+        intake: "عطیہ",
         outlay: "خرچ",
         viewReceipt: "رسید دیکھیں",
         noReceipt: "رسید نہیں ہے",
-        linkFile: "فائل لنک کریں",
+        linkFile: "فائل منسلک کریں",
+        // Admin & Settings Screen Translations
+        titleCharts: "چارٹس",
+        titleStats: "اعداد و شمار",
+        titleAdmin: "انتظامی کنٹرول",
+        titleSettings: "ترتیبات",
+        lblAddEntryTitle: "نئی انٹری شامل کریں",
+        lblAddDate: "انٹری کی تاریخ",
+        lblAddType: "قسم",
+        lblAddNotesIncome: "عطیہ دہندہ کا نام",
+        lblAddNotesExpense: "اخراجات کی تفصیل / نوٹس",
+        lblAddAmount: "رقم (پاکستانی روپے)",
+        lblAddCategory: "کیٹیگری",
+        lblAddReceipt: "رسید منسلک کریں",
+        lblSaveEntryBtn: "انٹری محفوظ کریں",
+        lblDatabaseToolsTitle: "ڈیٹا بیس کے امور",
+        lblExportJson: "JSON بیک اپ نکالیں",
+        lblImportJson: "JSON بیک اپ لوڈ کریں",
+        lblExportCsv: "ایکسل شیٹ ڈاؤن لوڈ کریں",
+        lblSettingViewmode: "صارف کا منظر",
+        lblSettingViewmodeDesc: "ایڈمن ریکارڈز تک رسائی حاصل کریں",
+        lblSettingLang: "زبان / Language",
+        lblSettingReset: "ڈیٹا بیس ری سیٹ کریں",
+        lblSettingResetDesc: "تمام تبدیلیاں مٹا کر ابتدائی ڈیٹا بحال کریں",
+        lblResetBtn: "ری سیٹ کریں",
         // Edit modal translations
         editModalTitle: "انٹری میں ترمیم کریں",
         lblEditDate: "انٹری کی تاریخ",
@@ -115,10 +173,22 @@ const TRANSLATIONS = {
         lblHasReceipt: "رسید منسلک ہے",
         lblChangeReceiptBtn: "تبدیل کریں",
         lblRemoveReceiptBtn: "حذف کریں",
-        lblUploadReceiptHelp: "رسید اپ لوڈ کرنے کے لیے تصویر منتخب کریں۔",
-        lblDeleteBtn: "انٹری حذف کریں",
+        lblUploadReceiptHelp: "رسید تبدیل کرنے کے لیے تصویر منتخب کریں۔",
+        lblDeleteBtn: "حذف کریں",
         lblCancelBtn: "منسوخ کریں",
-        lblSaveChangesBtn: "محفوظ کریں"
+        lblSaveChangesBtn: "محفوظ کریں",
+        // PIN pad
+        pinTitle: "ایڈمن کی تصدیق",
+        pinSubtitle: "ایڈمن ٹولز کو غیر مقفل کرنے کے لیے پن درج کریں",
+        pinCancelBtn: "منسوخ کریں",
+        // Navigation labels
+        navLedger: "کھاتہ",
+        navCharts: "چارٹس",
+        navStats: "اعداد و شمار",
+        navAdmin: "ایڈمن",
+        navSettings: "ترتیبات",
+        chartCashflowTitle: "ماہانہ آمدن اور اخراجات",
+        chartCategoryTitle: "اخراجات کی تفصیل"
     }
 };
 
@@ -143,7 +213,10 @@ let state = {
     viewMode: 'public', // 'public' or 'admin'
     language: 'en',     // 'en' or 'ur'
     cashflowChartInstance: null,
-    categoryChartInstance: null
+    categoryChartInstance: null,
+    enteredPin: '',
+    targetScreen: null,
+    currentActiveScreen: 'ledger'
 };
 
 // Document Elements
@@ -156,7 +229,6 @@ const elements = {
     packagesVal: document.getElementById('card-packages'),
     timelineScroll: document.getElementById('month-timeline'),
     searchBar: document.getElementById('search-bar'),
-    tableBody: document.getElementById('ledger-table-body'),
     adminPanel: document.getElementById('admin-panel'),
     receiptModal: document.getElementById('receipt-modal'),
     receiptTitle: document.getElementById('modal-receipt-title'),
@@ -194,6 +266,22 @@ window.addEventListener('DOMContentLoaded', () => {
     if (elements.formDate) {
         elements.formDate.value = new Date().toISOString().split('T')[0];
     }
+
+    // Set initial screen state in history
+    history.replaceState({screen: 'ledger'}, '');
+});
+
+// Back Button Navigation handler
+window.addEventListener('popstate', (e) => {
+    // Dismiss any active modals/overlays
+    if (elements.receiptModal) elements.receiptModal.classList.remove('active');
+    if (elements.editTxModal) elements.editTxModal.classList.remove('active');
+    if (elements.adminPasscodeModal) elements.adminPasscodeModal.classList.remove('active');
+    
+    // Switch to target screen if popped state represents a screen
+    if (e.state && e.state.screen) {
+        switchScreen(e.state.screen, false);
+    }
 });
 
 // Load database from LocalStorage or seed data
@@ -220,13 +308,58 @@ function saveDatabase() {
 
 // Reset data to seed defaults
 function resetToDefaultData() {
-    if (confirm("Are you sure you want to reset all transaction records to the default seed data? Any manually added transactions will be deleted.")) {
+    const isUr = state.language === 'ur';
+    const confirmMsg = isUr
+        ? "کیا آپ واقعی ڈیٹا بیس ری سیٹ کرنا چاہتے ہیں؟ آپ کے تمام نئے اندراجات مٹ جائیں گے۔"
+        : "Are you sure you want to reset all transaction records to default seed data? This will clear all modifications.";
+    
+    if (confirm(confirmMsg)) {
         localStorage.removeItem('awt_transactions');
         loadDatabase();
         initTimeline();
         state.currentMonthFilter = 'all';
         updateUI();
-        alert("Database has been reset to defaults.");
+        alert(isUr ? "ڈیٹا بیس کامیابی سے بحال کر دیا گیا ہے!" : "Database has been reset to defaults.");
+    }
+}
+
+// SPA Screen Navigation Logic
+function switchScreen(screenId, pushHistory = true) {
+    // If target is admin tools and viewMode is public, intercept with passcode screen
+    if (screenId === 'admin' && state.viewMode !== 'admin') {
+        state.targetScreen = 'admin';
+        openAdminPasscodeModal();
+        return;
+    }
+    
+    state.currentActiveScreen = screenId;
+
+    // Toggle active screen visibility
+    const screens = document.querySelectorAll('.app-screen');
+    screens.forEach(s => s.classList.remove('active'));
+    
+    const targetScreen = document.getElementById(`screen-${screenId}`);
+    if (targetScreen) {
+        targetScreen.classList.add('active');
+    }
+    
+    // Toggle active navigation tab state
+    const navItems = document.querySelectorAll('#bottom-nav-bar .nav-item');
+    navItems.forEach(n => n.classList.remove('active'));
+    
+    const targetNav = document.getElementById(`nav-${screenId}`);
+    if (targetNav) {
+        targetNav.classList.add('active');
+    }
+    
+    // Re-render components if charts screen to avoid canvas sizing bugs
+    if (screenId === 'charts') {
+        renderCashflowChart();
+        renderCategoryChart();
+    }
+
+    if (pushHistory) {
+        history.pushState({screen: screenId}, '');
     }
 }
 
@@ -236,7 +369,6 @@ function initTimeline() {
     const allTimeLabel = isUr ? 'کل مدت' : 'All Time';
     const entriesLabel = isUr ? 'انٹریز' : 'entries';
     
-    // Collect all unique months in YYYY-MM format
     const monthsSet = new Set();
     state.transactions.forEach(tx => {
         if (tx.date) {
@@ -246,7 +378,6 @@ function initTimeline() {
     
     const sortedMonths = Array.from(monthsSet).sort();
     
-    // Build HTML contents for timeline
     let timelineHTML = `
         <div class="timeline-item ${state.currentMonthFilter === 'all' ? 'active' : ''}" data-month="all" onclick="selectMonth('all')">
             ${allTimeLabel}
@@ -255,7 +386,7 @@ function initTimeline() {
     `;
     
     sortedMonths.forEach(m => {
-        const dateObj = new Date(m + "-02"); // Add day to avoid timezone conversion offsets
+        const dateObj = new Date(m + "-02"); 
         const monthLabel = dateObj.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
         const count = state.transactions.filter(tx => tx.date.startsWith(m)).length;
         
@@ -274,7 +405,6 @@ function initTimeline() {
 function selectMonth(monthStr) {
     state.currentMonthFilter = monthStr;
     
-    // Toggle active class on elements
     const items = elements.timelineScroll.querySelectorAll('.timeline-item');
     items.forEach(item => {
         if (item.getAttribute('data-month') === monthStr) {
@@ -290,58 +420,144 @@ function selectMonth(monthStr) {
 // View Mode controls
 function switchViewMode(mode) {
     if (mode === 'admin' && state.viewMode !== 'admin') {
-        // Show passcode prompt
-        elements.adminPasscodeModal.classList.add('active');
-        elements.adminPasscodeInput.value = '';
-        elements.adminErrorMsg.style.display = 'none';
-        elements.adminPasscodeInput.focus();
+        state.targetScreen = 'settings';
+        openAdminPasscodeModal();
     } else if (mode === 'public') {
         state.viewMode = 'public';
+        
+        // Sync setting active state
         document.getElementById('btn-public-view').classList.add('active');
         document.getElementById('btn-admin-view').classList.remove('active');
-        elements.adminPanel.classList.remove('active');
+        
+        // Redirect out of admin tools if currently active
+        if (state.currentActiveScreen === 'admin') {
+            switchScreen('ledger');
+        }
+        
         updateUI();
     }
+}
+
+// GRID PIN PAD OVERLAY LOGIC
+function openAdminPasscodeModal() {
+    state.enteredPin = '';
+    updatePinDots();
+    
+    if (elements.adminPasscodeModal) {
+        elements.adminPasscodeModal.classList.add('active');
+        history.pushState({modal: 'pinpad'}, '');
+    }
+    if (elements.adminErrorMsg) {
+        elements.adminErrorMsg.style.display = 'none';
+    }
+}
+
+function pressPinNumber(num) {
+    if (state.enteredPin.length >= 4) return;
+    state.enteredPin += num;
+    updatePinDots();
+    
+    if (state.enteredPin.length === 4) {
+        setTimeout(submitAdminUnlock, 200);
+    }
+}
+
+function backspacePin() {
+    if (state.enteredPin.length === 0) return;
+    state.enteredPin = state.enteredPin.slice(0, -1);
+    updatePinDots();
+}
+
+function clearPin() {
+    state.enteredPin = '';
+    updatePinDots();
+}
+
+function updatePinDots() {
+    const dots = document.querySelectorAll('.pin-dot');
+    dots.forEach((dot, idx) => {
+        if (idx < state.enteredPin.length) {
+            dot.classList.add('filled');
+        } else {
+            dot.classList.remove('filled');
+        }
+    });
 }
 
 function submitAdminUnlock() {
-    const pw = elements.adminPasscodeInput.value;
-    if (pw === '1234') {
+    if (state.enteredPin === '1234') {
         state.viewMode = 'admin';
+        
+        // Update View Mode switcher active states in settings screen
         document.getElementById('btn-admin-view').classList.add('active');
         document.getElementById('btn-public-view').classList.remove('active');
-        elements.adminPanel.classList.add('active');
-        elements.adminPasscodeModal.classList.remove('active');
+        
+        // Close overlay and pop history state
+        if (history.state && history.state.modal === 'pinpad') {
+            history.back();
+        } else {
+            elements.adminPasscodeModal.classList.remove('active');
+        }
+        
+        // Switch to target screen
+        const target = state.targetScreen || 'admin';
+        state.targetScreen = null;
+        switchScreen(target);
+        
         updateUI();
     } else {
-        elements.adminErrorMsg.style.display = 'block';
-        elements.adminPasscodeInput.focus();
+        if (elements.adminErrorMsg) {
+            elements.adminErrorMsg.style.display = 'block';
+        }
+        
+        // Trigger shake effect on dots row
+        const container = document.getElementById('pin-dots-container');
+        if (container) {
+            container.style.animation = 'none';
+            container.offsetHeight; /* trigger reflow */
+            container.style.animation = 'pinErrorShake 0.35s ease';
+        }
+        
+        // Reset code with delay
+        setTimeout(() => {
+            state.enteredPin = '';
+            updatePinDots();
+        }, 500);
     }
 }
 
-// Trigger passcode submission on press of enter
-elements.adminPasscodeInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        submitAdminUnlock();
-    }
-});
-
 function cancelAdminUnlock() {
-    elements.adminPasscodeModal.classList.remove('active');
-    // keep state public
-    document.getElementById('btn-public-view').classList.add('active');
-    document.getElementById('btn-admin-view').classList.remove('active');
+    if (history.state && history.state.modal === 'pinpad') {
+        history.back();
+    } else {
+        if (elements.adminPasscodeModal) {
+            elements.adminPasscodeModal.classList.remove('active');
+        }
+    }
+    
+    // Restore View Mode buttons matching the actual state
+    if (state.viewMode === 'admin') {
+        document.getElementById('btn-admin-view').classList.add('active');
+        document.getElementById('btn-public-view').classList.remove('active');
+    } else {
+        document.getElementById('btn-public-view').classList.add('active');
+        document.getElementById('btn-admin-view').classList.remove('active');
+    }
+    state.targetScreen = null;
 }
 
 // Helper to check if notes label needs updating
 function toggleFormNotesLabel() {
+    const isUr = state.language === 'ur';
     const type = document.getElementById('form-type').value;
+    const t = TRANSLATIONS[state.language];
+    
     if (type === 'income') {
-        elements.formNotesLabel.innerText = "Donor Name";
-        elements.formNotes.placeholder = "e.g., Yasir or Saad";
+        elements.formNotesLabel.innerText = t.lblAddNotesIncome;
+        elements.formNotes.placeholder = isUr ? "مثلاً: یاسر یا سعد" : "e.g., Yasir or Saad";
     } else {
-        elements.formNotesLabel.innerText = "Expense Description / Notes";
-        elements.formNotes.placeholder = "e.g., Vegetable Purchase (32kg Tomatoes...)";
+        elements.formNotesLabel.innerText = t.lblAddNotesExpense;
+        elements.formNotes.placeholder = isUr ? "مثلاً: سبزیوں کی خریداری" : "e.g., Vegetable Purchase (32kg Potatoes...)";
     }
 }
 
@@ -387,7 +603,6 @@ function updateUI() {
     elements.expenseCount.innerText = isUr ? `${expenseCount} اخراجات کیے گئے` : `${expenseCount} outlays made`;
     
     elements.balanceVal.innerText = formatCurrency(balance);
-    // Style balance red if negative
     if (balance < 0) {
         elements.balanceVal.style.color = 'var(--danger-color)';
     } else {
@@ -396,12 +611,14 @@ function updateUI() {
     
     elements.packagesVal.innerText = packagesDistributed.toLocaleString();
     
-    // 2. Render Ledger Table
+    // 2. Render Cards list
     renderLedgerTable(filteredTxs);
     
-    // 3. Render Visual Charts
-    renderCashflowChart();
-    renderCategoryChart();
+    // 3. Render Visual Charts if active
+    if (state.currentActiveScreen === 'charts') {
+        renderCashflowChart();
+        renderCategoryChart();
+    }
 }
 
 // Format number to local PKR currency layout
@@ -454,7 +671,6 @@ function getFilteredTransactions() {
     });
 }
 
-// Re-render data in ledger table based on filters
 // Helper to translate masked notes on the fly into Urdu Nastaliq
 function translateDescription(desc, isUr) {
     if (!isUr) return desc;
@@ -467,8 +683,8 @@ function translateDescription(desc, isUr) {
     return urDesc;
 }
 
+// Render dynamic card items for ledger screen
 function renderLedgerTable(filteredTxs) {
-    // Sort transactions reverse chronologically (newest first)
     const sortedTxs = [...filteredTxs].sort((a, b) => b.date.localeCompare(a.date));
     const isUr = state.language === 'ur';
     const t = TRANSLATIONS[state.language];
@@ -477,68 +693,49 @@ function renderLedgerTable(filteredTxs) {
     
     if (sortedTxs.length === 0) {
         html = `
-            <tr>
-                <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 30px;">
-                    <i class="fa-solid fa-folder-open fa-2xl" style="display:block; margin-bottom:15px; opacity:0.4;"></i>
-                    ${isUr ? 'کوئی اندراج نہیں ملا۔' : 'No entries found matching your criteria.'}
-                </td>
-            </tr>
+            <div style="text-align: center; color: var(--text-muted); padding: 40px 20px; width: 100%;">
+                <i class="fa-solid fa-folder-open fa-2xl" style="display:block; margin-bottom:15px; opacity:0.4;"></i>
+                ${isUr ? 'کوئی اندراج نہیں ملا۔' : 'No entries found matching your criteria.'}
+            </div>
         `;
     } else {
         sortedTxs.forEach(tx => {
             const dateStr = formatDate(tx.date);
-            const badgeClass = tx.type === 'income' ? 'income' : 'expense';
-            const badgeIcon = tx.type === 'income' ? 'plus' : 'minus';
-            const badgeText = tx.type === 'income' ? t.intake : t.outlay;
+            const cardClass = tx.type === 'income' ? 'income' : 'expense';
+            const amountClass = tx.type === 'income' ? 'income' : 'expense';
+            const amountPrefix = tx.type === 'income' ? '+' : '-';
+            const amountText = Math.round(tx.amount).toLocaleString('en-US');
             
-            // Mask/Anonymize donor names in public view
             let notesDisplay = (state.viewMode === 'public' && tx.type === 'income') ? tx.maskedNotes : tx.notes;
             if (isUr && state.viewMode === 'public' && tx.type === 'income') {
                 notesDisplay = translateDescription(notesDisplay, true);
             }
             
-            // Add edit button in admin view
-            let notesCellContent = notesDisplay;
-            if (state.viewMode === 'admin') {
-                notesCellContent = `
-                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%;">
-                        <span>${notesDisplay}</span>
-                        <button class="edit-entry-btn" onclick="openEditTxModal('${tx.id}')" title="${isUr ? 'انٹری میں ترمیم کریں' : 'Edit Entry'}">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                    </div>
-                `;
-            }
-            
             const categoryDisplay = isUr ? (CATEGORY_TRANSLATIONS[tx.category] || tx.category) : tx.category;
             
-            const amountClass = tx.type === 'income' ? 'income' : 'expense';
-            const amountPrefix = tx.type === 'income' ? '+' : '-';
-            const amountText = Math.round(tx.amount).toLocaleString('en-US');
-            
-            // Receipt Button configuration
-            let receiptHTML = '';
+            // Receipt Action configuration
+            let actionHTML = '';
             if (state.viewMode === 'public' && tx.type === 'income') {
-                receiptHTML = `
-                    <span style="color:var(--text-muted); font-size:13px; font-weight:500; display:inline-flex; align-items:center; gap:5px;">
-                        <i class="fa-solid fa-user-shield"></i> ${isUr ? 'شناخت پوشیدہ' : 'Donor Hidden'}
+                actionHTML = `
+                    <span style="color:var(--text-muted); font-size:11px; font-weight:600; display:inline-flex; align-items:center; gap:4px; padding: 4px 0;">
+                        <i class="fa-solid fa-user-shield"></i> ${isUr ? 'پوشیدہ' : 'Hidden'}
                     </span>
                 `;
             } else if (tx.receipt) {
-                receiptHTML = `
+                actionHTML = `
                     <button class="receipt-trigger-btn" onclick="openReceiptModal('${tx.id}')">
                         <i class="fa-solid fa-file-invoice-dollar"></i> ${t.viewReceipt}
                     </button>
                 `;
             } else {
                 if (state.viewMode === 'admin') {
-                    receiptHTML = `
+                    actionHTML = `
                         <button class="receipt-trigger-btn" onclick="attachReceiptPrompt('${tx.id}')" style="background:var(--accent-light); border-color:var(--accent-color); color:#8d5e2d;">
                             <i class="fa-solid fa-paperclip"></i> ${t.linkFile}
                         </button>
                     `;
                 } else {
-                    receiptHTML = `
+                    actionHTML = `
                         <button class="receipt-trigger-btn no-receipt" disabled>
                             <i class="fa-solid fa-ban"></i> ${t.noReceipt}
                         </button>
@@ -546,26 +743,42 @@ function renderLedgerTable(filteredTxs) {
                 }
             }
             
+            // Edit trigger configuration
+            let editHTML = '';
+            if (state.viewMode === 'admin') {
+                editHTML = `
+                    <button class="edit-entry-btn" onclick="openEditTxModal('${tx.id}')" title="${isUr ? 'انٹری میں ترمیم کریں' : 'Edit Entry'}">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                `;
+            }
+            
             html += `
-                <tr id="row-${tx.id}">
-                    <td style="font-weight: 500;">${dateStr}</td>
-                    <td>
-                        <span class="badge ${badgeClass}">
-                            <i class="fa-solid fa-${badgeIcon}"></i> ${badgeText}
-                        </span>
-                    </td>
-                    <td style="max-width: 320px; font-size:14px; word-break: break-word;">${notesCellContent}</td>
-                    <td><span class="cat-tag">${categoryDisplay}</span></td>
-                    <td class="amount-text ${amountClass}" style="text-align: right;">${amountPrefix} Rs. ${amountText}</td>
-                    <td>${receiptHTML}</td>
-                </tr>
+                <div class="tx-card ${cardClass}" id="card-${tx.id}">
+                    <div class="tx-card-main">
+                        <div class="tx-card-meta">
+                            <span class="tx-card-date">${dateStr}</span>
+                            <span class="cat-tag">${categoryDisplay}</span>
+                        </div>
+                        <div class="tx-card-notes">${notesDisplay}</div>
+                    </div>
+                    <div class="tx-card-right">
+                        <div class="tx-card-amount ${amountClass}">${amountPrefix} Rs. ${amountText}</div>
+                        <div class="tx-card-actions">
+                            ${actionHTML}
+                            ${editHTML}
+                        </div>
+                    </div>
+                </div>
             `;
         });
     }
     
-    elements.tableBody.innerHTML = html;
+    const container = document.getElementById('ledger-card-list');
+    if (container) {
+        container.innerHTML = html;
+    }
     
-    // Format ledger title translation
     let titleText = '';
     if (isUr) {
         titleText = `${state.currentTypeFilter === 'all' ? 'تمام مالیاتی' : state.currentTypeFilter === 'income' ? 'عطیات (آمدن)' : 'اخراجات (خرچ)'} کی انٹریز (${sortedTxs.length})`;
@@ -579,69 +792,108 @@ function renderLedgerTable(filteredTxs) {
 function toggleLanguage() {
     state.language = state.language === 'en' ? 'ur' : 'en';
     
-    // Toggle class on body
     if (state.language === 'ur') {
         document.body.classList.add('lang-ur');
     } else {
         document.body.classList.remove('lang-ur');
     }
     
-    // Update DOM static labels
     const t = TRANSLATIONS[state.language];
+    
+    // Update Brand headers
     document.getElementById('brand-main-title').innerText = t.brandTitle;
-    document.getElementById('brand-sub-title').innerHTML = t.brandSub;
-    document.getElementById('hero-desc-text').innerHTML = t.heroDesc;
+    document.getElementById('brand-sub-title').innerText = t.brandSub;
     document.getElementById('lang-btn-text').innerText = t.langBtn;
+    
+    // View mode switches
     document.getElementById('view-public-text').innerText = t.viewPublic;
     document.getElementById('view-admin-text').innerText = t.viewAdmin;
+    
+    // Main Stats Labels
     document.getElementById('label-total-income').innerText = t.lblTotalIncome;
     document.getElementById('label-total-expense').innerText = t.lblTotalExpense;
     document.getElementById('label-balance').innerText = t.lblBalance;
     document.getElementById('label-balance-meta').innerText = t.metaBalance;
     document.getElementById('label-packages').innerText = t.lblPackages;
     document.getElementById('label-packages-meta').innerText = t.metaPackages;
+    
+    // Filters and search placeholder
     document.getElementById('label-filter-month').innerText = t.lblFilterMonth;
-    document.getElementById('btn-export-text').innerText = t.btnExport;
-    
-    document.getElementById('th-date').innerText = t.thDate;
-    document.getElementById('th-type').innerText = t.thType;
-    document.getElementById('th-desc').innerText = t.thDesc;
-    document.getElementById('th-cat').innerText = t.thCat;
-    document.getElementById('th-amount').innerText = t.thAmount;
-    document.getElementById('th-receipt').innerText = t.thReceipt;
-    
     document.getElementById('search-bar').placeholder = t.searchPlaceholder;
     
     document.getElementById('tab-all').innerText = t.tabAll;
     document.getElementById('tab-income').innerText = t.tabIncome;
     document.getElementById('tab-expense').innerText = t.tabExpense;
-
-    // Translate Edit Modal elements if they exist
-    if (document.getElementById('edit-modal-title')) {
-        document.getElementById('edit-modal-title').innerText = t.editModalTitle;
-        document.getElementById('lbl-edit-date').innerText = t.lblEditDate;
-        document.getElementById('lbl-edit-type').innerText = t.lblEditType;
-        
-        // Update edit form notes label based on selected type
-        const editType = document.getElementById('edit-form-type').value;
-        document.getElementById('edit-form-notes-label').innerText = editType === 'income' ? t.lblEditNotesIncome : t.lblEditNotesExpense;
-        
-        document.getElementById('lbl-edit-amount').innerText = t.lblEditAmount;
-        document.getElementById('lbl-edit-category').innerText = t.lblEditCategory;
-        document.getElementById('lbl-edit-receipt-title').innerText = t.lblEditReceiptTitle;
-        document.getElementById('lbl-has-receipt').innerText = t.lblHasReceipt;
-        document.getElementById('lbl-change-receipt-btn').innerText = t.lblChangeReceiptBtn;
-        document.getElementById('lbl-remove-receipt-btn').innerText = t.lblRemoveReceiptBtn;
-        document.getElementById('lbl-upload-receipt-help').innerText = t.lblUploadReceiptHelp;
-        document.getElementById('lbl-delete-btn').innerText = t.lblDeleteBtn;
-        document.getElementById('lbl-cancel-btn').innerText = t.lblCancelBtn;
-        document.getElementById('lbl-save-changes-btn').innerText = t.lblSaveChangesBtn;
-    }
     
-    // Re-initialize month filter elements to update entries texts (e.g. 'entries' word in timeline)
+    // Screens titles
+    document.getElementById('title-charts-screen').innerText = t.titleCharts;
+    document.getElementById('title-stats-screen').innerText = t.titleStats;
+    document.getElementById('title-admin-screen').innerText = t.titleAdmin;
+    document.getElementById('title-settings-screen').innerText = t.titleSettings;
+    
+    // Charts descriptions
+    document.getElementById('chart-cashflow-title').innerText = t.chartCashflowTitle;
+    document.getElementById('chart-category-title').innerText = t.chartCategoryTitle;
+    
+    // Settings toggles translation
+    document.getElementById('lbl-setting-viewmode').innerText = t.lblSettingViewmode;
+    document.getElementById('lbl-setting-viewmode-desc').innerText = t.lblSettingViewmodeDesc;
+    document.getElementById('lbl-setting-lang').innerText = t.lblSettingLang;
+    document.getElementById('lbl-lang-toggle-text').innerText = t.langBtn;
+    document.getElementById('lbl-setting-reset').innerText = t.lblSettingReset;
+    document.getElementById('lbl-setting-reset-desc').innerText = t.lblSettingResetDesc;
+    document.getElementById('lbl-reset-btn').innerText = t.lblResetBtn;
+    document.getElementById('footer-credit-text').innerHTML = t.brandTitle + " &bull; " + t.brandSub;
+
+    // Admin screen fields translation
+    document.getElementById('lbl-add-entry-title').innerText = t.lblAddEntryTitle;
+    document.getElementById('lbl-add-date').innerText = t.lblAddDate;
+    document.getElementById('lbl-add-type').innerText = t.lblAddType;
+    document.getElementById('lbl-add-amount').innerText = t.lblAddAmount;
+    document.getElementById('lbl-add-category').innerText = t.lblAddCategory;
+    document.getElementById('lbl-add-receipt').innerText = t.lblAddReceipt;
+    document.getElementById('lbl-save-entry-btn').innerText = t.lblSaveEntryBtn;
+    
+    document.getElementById('lbl-database-tools-title').innerText = t.lblDatabaseToolsTitle;
+    document.getElementById('lbl-export-json').innerText = t.lblExportJson;
+    document.getElementById('lbl-import-json').innerText = t.lblImportJson;
+    document.getElementById('lbl-export-csv').innerText = t.lblExportCsv;
+    
+    // Pin pad screen translation
+    document.getElementById('pin-title').innerText = t.pinTitle;
+    document.getElementById('pin-subtitle').innerText = t.pinSubtitle;
+    document.getElementById('pin-cancel-btn').innerText = t.pinCancelBtn;
+
+    // Navigation Labels translation
+    document.getElementById('nav-label-ledger').innerText = t.navLedger;
+    document.getElementById('nav-label-charts').innerText = t.navCharts;
+    document.getElementById('nav-label-stats').innerText = t.navStats;
+    document.getElementById('nav-label-admin').innerText = t.navAdmin;
+    document.getElementById('nav-label-settings').innerText = t.navSettings;
+
+    // Translate Edit Modal elements if active
+    document.getElementById('edit-modal-title').innerText = t.editModalTitle;
+    document.getElementById('lbl-edit-date').innerText = t.lblEditDate;
+    document.getElementById('lbl-edit-type').innerText = t.lblEditType;
+    
+    const editType = document.getElementById('edit-form-type').value;
+    document.getElementById('edit-form-notes-label').innerText = editType === 'income' ? t.lblEditNotesIncome : t.lblEditNotesExpense;
+    
+    document.getElementById('lbl-edit-amount').innerText = t.lblEditAmount;
+    document.getElementById('lbl-edit-category').innerText = t.lblEditCategory;
+    document.getElementById('lbl-edit-receipt-title').innerText = t.lblEditReceiptTitle;
+    document.getElementById('lbl-has-receipt').innerText = t.lblHasReceipt;
+    document.getElementById('lbl-change-receipt-btn').innerText = t.lblChangeReceiptBtn;
+    document.getElementById('lbl-remove-receipt-btn').innerText = t.lblRemoveReceiptBtn;
+    document.getElementById('lbl-upload-receipt-help').innerText = t.lblUploadReceiptHelp;
+    document.getElementById('lbl-delete-btn').innerText = t.lblDeleteBtn;
+    document.getElementById('lbl-cancel-btn').innerText = t.lblCancelBtn;
+    document.getElementById('lbl-save-changes-btn').innerText = t.lblSaveChangesBtn;
+    
+    // Refresh timeline month descriptors
     initTimeline();
     
-    // Re-render dashboard totals and entries list
+    // Re-render UI
     updateUI();
 }
 
@@ -654,21 +906,22 @@ function handleFilterChange() {
 function setLedgerFilter(typeStr) {
     state.currentTypeFilter = typeStr;
     
-    // Toggle active state on tabs
     const tabs = ['all', 'income', 'expense'];
     tabs.forEach(t => {
         const btn = document.getElementById(`tab-${t}`);
-        if (t === typeStr) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
+        if (btn) {
+            if (t === typeStr) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
         }
     });
     
     updateUI();
 }
 
-// Receipt Modal Controls
+// Receipt Modal Controls (Slide-Up Bottom Sheet layout)
 function openReceiptModal(txId) {
     const tx = state.transactions.find(t => t.id === txId);
     if (!tx) return;
@@ -677,7 +930,6 @@ function openReceiptModal(txId) {
     
     let modalHTML = '';
     
-    // Check if receipt exists
     if (tx.receipt) {
         let imgSrc = '';
         if (tx.receipt.startsWith('data:')) {
@@ -688,7 +940,7 @@ function openReceiptModal(txId) {
         
         modalHTML = `
             <img src="${imgSrc}" class="modal-receipt-img" alt="Receipt Image">
-            <div style="margin-top:10px;">
+            <div style="margin-top:12px;">
                 <a href="${imgSrc}" target="_blank" class="btn-secondary" style="display:inline-flex;">
                     <i class="fa-solid fa-maximize"></i> Open in New Tab
                 </a>
@@ -720,8 +972,8 @@ function openReceiptModal(txId) {
                         </span>
                     </div>
                     <div class="digital-item-row" style="margin-top:10px; flex-direction:column; align-items:flex-start;">
-                        <span style="font-size:10px; color:#718096;">${notesLabel}:</span>
-                        <p style="font-weight:bold; margin-top:3px; font-size:12px; line-height:1.4;">${maskedNotes}</p>
+                        <span style="font-size:9px; color:#718096;">${notesLabel}:</span>
+                        <p style="font-weight:bold; margin-top:3px; font-size:11px; line-height:1.4;">${maskedNotes}</p>
                     </div>
                     <div class="digital-item-row" style="margin-top:10px;">
                         <span>CATEGORY:</span>
@@ -731,8 +983,8 @@ function openReceiptModal(txId) {
                 <div class="digital-total">
                     TOTAL AMOUNT: Rs. ${amountNum}
                 </div>
-                <div style="margin-top:30px; text-align:center; border-top:1px dashed #cbd5e0; padding-top:15px; font-size:10px; color:#718096; line-height:1.4;">
-                    <i class="fa-solid fa-circle-check" style="color:#2ec4b6;"></i> Digitally Verified & Reconciled with Ledger. 
+                <div style="margin-top:24px; text-align:center; border-top:1px dashed #cbd5e0; padding-top:10px; font-size:9px; color:#718096; line-height:1.4;">
+                    <i class="fa-solid fa-circle-check" style="color:#2ec4b6;"></i> Digitally Verified & Reconciled. 
                     <br>Physical receipt was not uploaded.
                 </div>
             </div>
@@ -756,7 +1008,7 @@ function openReceiptModal(txId) {
                 <span>${tx.type === 'income' ? 'Donation Intake' : 'Expense Outlay'}</span>
             </div>
             <div class="modal-detail-row">
-                <span>Notes / Notes</span>
+                <span>Notes</span>
                 <span>${displayNotes}</span>
             </div>
             <div class="modal-detail-row">
@@ -772,10 +1024,17 @@ function openReceiptModal(txId) {
     
     elements.receiptBody.innerHTML = modalHTML;
     elements.receiptModal.classList.add('active');
+    history.pushState({modal: 'receipt'}, '');
 }
 
 function closeReceiptModal(e) {
-    elements.receiptModal.classList.remove('active');
+    if (e) e.stopPropagation();
+    if (elements.receiptModal.classList.contains('active')) {
+        elements.receiptModal.classList.remove('active');
+        if (history.state && history.state.modal === 'receipt') {
+            history.back();
+        }
+    }
 }
 
 // Admin attachment feature
@@ -821,8 +1080,6 @@ function handleAddTransaction(e) {
     
     const newTxId = "tx_" + Date.now();
     
-    // Mask notes logic
-    // Mask helper
     let maskedVal = notesVal;
     if (typeVal === 'income') {
         const parts = notesVal.split(' ');
@@ -852,8 +1109,8 @@ function handleAddTransaction(e) {
         // Re-initialize timeline to include new months if necessary
         initTimeline();
         
-        // Re-render UI
-        updateUI();
+        // Switch screen to Ledger and render
+        switchScreen('ledger');
         
         // Reset form
         elements.addTxForm.reset();
@@ -863,7 +1120,6 @@ function handleAddTransaction(e) {
         alert("Transaction entry successfully added to the database!");
     };
     
-    // If a file is uploaded, convert to base64
     if (receiptFile) {
         const reader = new FileReader();
         reader.onload = function(evt) {
@@ -890,12 +1146,10 @@ function renderCashflowChart() {
     const canvas = document.getElementById('cashflowChart');
     if (!canvas) return;
     
-    // Destory existing instance
     if (state.cashflowChartInstance) {
         state.cashflowChartInstance.destroy();
     }
     
-    // Find all months in database dynamically to represent full data
     const monthsMap = {}; // format: YYYY-MM -> {income, expense}
     
     state.transactions.forEach(tx => {
@@ -912,7 +1166,6 @@ function renderCashflowChart() {
     
     const sortedMonths = Object.keys(monthsMap).sort();
     
-    // Format X labels (e.g. "Mar 2026")
     const labels = sortedMonths.map(m => {
         const dateObj = new Date(m + "-02");
         return dateObj.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
@@ -928,7 +1181,7 @@ function renderCashflowChart() {
             labels: labels,
             datasets: [
                 {
-                    label: 'Intakes (Donations)',
+                    label: state.language === 'ur' ? 'عطیات (آمدن)' : 'Intakes (Donations)',
                     data: incomeData,
                     backgroundColor: 'rgba(46, 196, 182, 0.85)',
                     borderColor: 'var(--success-color)',
@@ -936,7 +1189,7 @@ function renderCashflowChart() {
                     borderRadius: 4
                 },
                 {
-                    label: 'Outlays (Expenses)',
+                    label: state.language === 'ur' ? 'اخراجات (خرچ)' : 'Outlays (Expenses)',
                     data: expenseData,
                     backgroundColor: 'rgba(230, 57, 70, 0.85)',
                     borderColor: 'var(--danger-color)',
@@ -952,7 +1205,7 @@ function renderCashflowChart() {
                 legend: {
                     position: 'top',
                     labels: {
-                        font: { family: 'Outfit', size: 12 }
+                        font: { family: 'Outfit', size: 11 }
                     }
                 },
                 tooltip: {
@@ -984,14 +1237,12 @@ function renderCategoryChart() {
     const canvas = document.getElementById('categoryChart');
     if (!canvas) return;
     
-    // Destroy existing instance
     if (state.categoryChartInstance) {
         state.categoryChartInstance.destroy();
     }
     
     const filteredTxs = getFilteredTransactions();
     
-    // Group expense by category
     const catMap = {};
     filteredTxs.forEach(tx => {
         if (tx.type === 'expense') {
@@ -1002,17 +1253,23 @@ function renderCategoryChart() {
     const labels = Object.keys(catMap);
     const data = Object.values(catMap);
     
-    // If no expenses, show empty chart state
     if (labels.length === 0) {
-        labels.push("No Expenses");
+        labels.push(state.language === 'ur' ? "اخراجات نہیں ہیں" : "No Expenses");
         data.push(1);
     }
+    
+    const translatedLabels = labels.map(label => {
+        if (state.language === 'ur') {
+            return CATEGORY_TRANSLATIONS[label] || label;
+        }
+        return label;
+    });
     
     const ctx = canvas.getContext('2d');
     state.categoryChartInstance = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: labels,
+            labels: translatedLabels,
             datasets: [{
                 data: data,
                 backgroundColor: [
@@ -1035,13 +1292,15 @@ function renderCategoryChart() {
                 legend: {
                     position: 'right',
                     labels: {
-                        font: { family: 'Outfit', size: 12 }
+                        font: { family: 'Outfit', size: 11 }
                     }
                 },
                 tooltip: {
                     callbacks: {
                         label: function(context) {
-                            if (context.label === "No Expenses") return "No outlays recorded in this scope.";
+                            if (context.label === "No Expenses" || context.label === "اخراجات نہیں ہیں") {
+                                return state.language === 'ur' ? "کوئی خرچ ریکارڈ نہیں کیا گیا۔" : "No outlays recorded in this scope.";
+                            }
                             const val = context.raw;
                             const total = context.dataset.data.reduce((a, b) => a + b, 0);
                             const pct = ((val / total) * 100).toFixed(1);
@@ -1050,7 +1309,7 @@ function renderCategoryChart() {
                     }
                 }
             },
-            cutout: '65%'
+            cutout: '60%'
         }
     });
 }
@@ -1076,7 +1335,6 @@ function importDataJSON(e) {
         try {
             const imported = JSON.parse(evt.target.result);
             if (Array.isArray(imported)) {
-                // Perform quick structure validation
                 const isValid = imported.every(tx => tx.id && tx.date && tx.notes && tx.amount);
                 if (isValid) {
                     state.transactions = imported;
@@ -1101,7 +1359,6 @@ function importDataJSON(e) {
 function exportDataCSV() {
     const headers = ["ID", "Date", "Type", "Notes", "Category", "Cash In (Intake)", "Cash Out (Outlay)", "Balance"];
     
-    // Sort transactions chronologically for standard ledger auditing
     const sortedTxs = [...state.transactions].sort((a, b) => a.date.localeCompare(b.date));
     
     let csvRows = [headers.join(",")];
@@ -1113,7 +1370,6 @@ function exportDataCSV() {
         const cashOut = tx.type === 'expense' ? Math.round(tx.amount) : 0;
         runningBalance += (cashIn - cashOut);
         
-        // Sanitize notes text (remove quotes, commas) to prevent breaking CSV formatting
         const sanitizedNotes = `"${(state.viewMode === 'public' && tx.type === 'income' ? tx.maskedNotes : tx.notes).replace(/"/g, '""')}"`;
         
         const row = [
@@ -1139,17 +1395,15 @@ function exportDataCSV() {
 }
 
 // ==========================================
-// Admin Edit Transaction modal controls
+// Admin Edit Transaction modal controls (Slide-Up Bottom Sheet layout)
 // ==========================================
 
-// Global state variable for edit modal receipt base64 storage
 state.tempEditReceipt = null;
 
 function openEditTxModal(txId) {
     const tx = state.transactions.find(t => t.id === txId);
     if (!tx) return;
     
-    // Populate form fields
     elements.editFormId.value = tx.id;
     elements.editFormDate.value = tx.date;
     elements.editFormType.value = tx.type;
@@ -1159,19 +1413,24 @@ function openEditTxModal(txId) {
     
     state.tempEditReceipt = tx.receipt;
     
-    // Toggle notes label based on transaction type
     toggleEditFormNotesLabel();
-    
-    // Configure receipt display preview
     updateEditFormReceiptPreview();
     
-    // Show Edit Transaction Modal
-    elements.editTxModal.classList.add('active');
+    if (elements.editTxModal) {
+        elements.editTxModal.classList.add('active');
+        history.pushState({modal: 'edit'}, '');
+    }
 }
 
 function closeEditTxModal(e) {
-    elements.editTxModal.classList.remove('active');
-    state.tempEditReceipt = null;
+    if (e) e.stopPropagation();
+    if (elements.editTxModal.classList.contains('active')) {
+        elements.editTxModal.classList.remove('active');
+        state.tempEditReceipt = null;
+        if (history.state && history.state.modal === 'edit') {
+            history.back();
+        }
+    }
 }
 
 function toggleEditFormNotesLabel() {
@@ -1200,12 +1459,12 @@ function updateEditFormReceiptPreview() {
         elements.editReceiptThumbnail.src = imgSrc;
         elements.editReceiptPreviewContainer.style.display = 'flex';
         elements.editReceiptUploadContainer.style.display = 'none';
-        elements.editReceiptUpload.value = ''; // clear file selection
+        elements.editReceiptUpload.value = '';
     } else {
         elements.editReceiptThumbnail.src = '';
         elements.editReceiptPreviewContainer.style.display = 'none';
         elements.editReceiptUploadContainer.style.display = 'block';
-        elements.editReceiptUpload.value = ''; // clear file selection
+        elements.editReceiptUpload.value = '';
     }
 }
 
@@ -1247,7 +1506,6 @@ function handleEditTransactionSubmit(e) {
         return;
     }
     
-    // Re-mask notes logic for public view
     let maskedVal = notesVal;
     if (typeVal === 'income') {
         const parts = notesVal.split(' ');
@@ -1258,7 +1516,6 @@ function handleEditTransactionSubmit(e) {
         }
     }
     
-    // Update properties
     tx.date = dateVal;
     tx.originalDate = formatDateISOToOriginal(dateVal);
     tx.notes = notesVal;
@@ -1268,7 +1525,6 @@ function handleEditTransactionSubmit(e) {
     tx.amount = amountVal;
     tx.receipt = state.tempEditReceipt;
     
-    // Save database and update visuals
     saveDatabase();
     initTimeline();
     updateUI();
@@ -1294,7 +1550,6 @@ function handleDeleteTransaction() {
         return;
     }
     
-    // Remove transaction record from state array
     state.transactions.splice(index, 1);
     
     saveDatabase();
@@ -1305,4 +1560,3 @@ function handleDeleteTransaction() {
     
     alert(isUr ? "اندراج کامیابی سے حذف کر دیا گیا ہے!" : "Transaction entry has been successfully deleted!");
 }
-
