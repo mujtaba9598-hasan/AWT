@@ -459,7 +459,13 @@ function renderLedgerTable(filteredTxs) {
             
             // Receipt Button configuration
             let receiptHTML = '';
-            if (tx.receipt) {
+            if (state.viewMode === 'public' && tx.type === 'income') {
+                receiptHTML = `
+                    <span style="color:var(--text-muted); font-size:13px; font-weight:500; display:inline-flex; align-items:center; gap:5px;">
+                        <i class="fa-solid fa-user-shield"></i> ${isUr ? 'شناخت پوشیدہ' : 'Donor Hidden'}
+                    </span>
+                `;
+            } else if (tx.receipt) {
                 receiptHTML = `
                     <button class="receipt-trigger-btn" onclick="openReceiptModal('${tx.id}')">
                         <i class="fa-solid fa-file-invoice-dollar"></i> ${t.viewReceipt}
